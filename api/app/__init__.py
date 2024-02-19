@@ -18,6 +18,6 @@ def root():
     return jsonify(message=f'Welcome to {app.config["APP_NAME"]}')
 
 # Blueprints
-from app.views.example import bp as example_bp
+from app.views.auth import bp as auth_bp 
 
-app.register_blueprint(example_bp, url_prefix=f'{app.config["APP_ROOT"]}/example')
+app.register_blueprint(auth_bp, url_prefix=f'{app.config["APP_ROOT"]}/auth')
