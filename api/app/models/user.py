@@ -2,7 +2,7 @@ from app import db
 from app.utils import generate_id
 
 
-class User(db.model):
+class User(db.Model):
     __tablename__ = "User"
 
     id = db.Column(db.String(64), primary_key=True, default=generate_id)
