@@ -9,8 +9,8 @@ app = Flask(__name__)
 app.config.from_object(Settings)
 
 # Connections
-# db = SQLAlchemy(app)
-# ma = Marshmallow(app)
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
 
 # Root Endpoint
 @app.route(f'{app.config["APP_ROOT"]}/')
