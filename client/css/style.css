@@ -206,10 +206,12 @@
 .container {
   width: 90%;
   padding: 10px 40px;
+  
 }
 .container .swiper-container {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .container .swiper-slide {
   position: relative;
@@ -255,7 +257,11 @@
 }
 .swiper-button-next,
 .swiper-button-prev  {
-  right: 20px !important;
-  top: 165vh;
+  right: 8% !important;
+  top: 160vh;
   color: #ff5722;
+}
+
+.swiper-button-prev{
+  left: 8% !important;
 }
