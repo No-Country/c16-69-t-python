@@ -43,7 +43,7 @@
 
 .navbar {
   padding: 0 10vw;
-  width: 80%;
+  width: 100%;
 }
 
 .navbar-nav .nav-item.active {
@@ -58,10 +58,12 @@
   color: white;
   font-style: normal;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 
   background-color: #ff5722;
   border-radius: 15px;
   border: none;
+  border: 2px solid #ff5722;
 
   width: 20vw;
 }
@@ -69,14 +71,11 @@
 #btn-registro {
   display: none;
   width: fit-content;
+
 }
 
-.btn:hover {
-  background-color: #ff9800;
-  border: 2px solid #ff5722;
-  color: white;
-}
 
+ 
 .main {
   width: 100%;
   /*  height:90vh; */
@@ -159,6 +158,13 @@
   border: 2px solid #ff5722;
 }
 
+.btn:hover{
+  background-color: #ff9800;
+  border: 2px solid #ff5722;
+  color: white;
+  
+}
+
 .home-img-container {
   position: absolute;
   top: 0;
@@ -187,13 +193,25 @@
 
 .main-post h2 {
   margin-top: 10vh;
+  margin-bottom: 0;
   color: #ff5722;
 }
 
 .main-post p {
-  margin-left: 20vw;
-  margin-right: 20vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 5vh;
+  
 }
+
+.btn-publicar{
+
+  width: fit-content;
+  margin: 15px auto;
+  display: block; /* PONER EN  NONE Debe cambiar a block cuando el usuario está registrado */
+  margin-top: 5px;
+}
+
 .main-map {
   height: 100vh;
   background-color: #ff9800;
@@ -248,13 +266,26 @@
 .container .swiper-slide .card-text p{
   margin: 0;
   text-align: left;
+  font-size: 15px;
 
 }
 
 .container .swiper-slide .card-link a {
   text-decoration: none;
-  color: #ff5722;
+  font-size: 13px;
+ 
+
 }
+
+.btn-link{
+  width: fit-content;
+  background-color: #ff5722;
+  color: white;
+  display: block; /* PONER EN  NONE Debe cambiar a block cuando el usuario está registrado */
+  margin: auto;
+  padding: 8px;
+}
+
 .swiper-button-next,
 .swiper-button-prev  {
   right: 8% !important;
