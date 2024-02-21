@@ -231,6 +231,10 @@
 }
 .container .swiper-slide .card-description {
   padding: 1rem 1rem;
+  background-color: hsl(36, 100%, 50%);
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  
 }
 .container .swiper-slide .card-title,
 .container .swiper-slide .card-text {
