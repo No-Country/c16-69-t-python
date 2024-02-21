@@ -1,5 +1,6 @@
 from app import db
 from app.utils import generate_id
+from sqlalchemy.sql import func
 
 
 class User(db.Model):
@@ -12,11 +13,11 @@ class User(db.Model):
     last_name = db.Column(db.String)
     address = db.Column(db.String)
     password = db.Column(db.String)
-    role = db.Column(db.Enum('User', 'Administrator', name='role'))
+    role = db.Column(db.Enum('User', 'Administrator', name='role'), default='User')
     avatar_url = db.Column(db.String)
-    created_at = db.Column(db.TIMESTAMP)
-    updated_at = db.Column(db.TIMESTAMP)
-    reputation = db.Column(db.Integer)
+    created_at = db.Column(db.TIMESTAMP, server_default=func.now())
+    updated_at = db.Column(db.TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp())
+    reputation = db.Column(db.Integer, default=0)
     is_active = db.Column(db.Boolean, default=True)
 
     # Relations
