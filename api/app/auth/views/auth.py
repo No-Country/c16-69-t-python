@@ -2,8 +2,8 @@ from flask import Blueprint, jsonify, request
 from werkzeug.security import generate_password_hash
 from datetime import datetime
 from app import db
-from app.models.user import User
-from app.schemas.user import user_schema
+from app.auth.models.user import User
+from app.auth.schemas.user import user_schema
 from marshmallow.exceptions import ValidationError
 import re
 
