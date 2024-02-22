@@ -1,60 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PetFinder</title>
 
-    <!-- Enlace a bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <!-- Header: navBar SOLE -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetFinder</title>
+  <!--Link a css-->
+  <link rel="stylesheet" href="./css/style.css">
+  <!--Atribucion a favicon paw icon-->
+  <a href="https://www.flaticon.com/free-icons/paw" title="paw icons"
+    alt="Paw icons created by afif fudin - Flaticon"></a>
+  <!-- Enlace a bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
 
-    <!-- Fin Header -->
-    <!--  Main -->
-    <main>
-      <section>
-        <!-- Inicio: Sole -->
-      </section>
-      <section>
-        <!--  Post: Sole-->
-      </section>
-      <section>
-        <!-- Map: Luz -->
-      </section>
-      <section>
-        <!-- About: Luz -->
-      </section>
-    </main>
+<body>
+  <!-- Header: navBar SOLE -->
 
-    <!-- Fin Main -->
+  <!-- Fin Header -->
+  <!--  Main -->
+  <main>
+    <section>
+      <!-- Inicio: Sole -->
+    </section>
+    <section>
+      <!--  Post: Sole-->
+    </section>
+    <section>
+      <!-- Map: Luz -->
+      <div class="container-fluid position-relative bg-secondary-subtle object-fit-cover">
+        <img src="./img/mapa.png" alt="map" id="map" class="img-fluid ratio ratio-16x9 mx-auto d-block">
+        <h2 class="textosecundario d-block position-absolute top-50 start-0 fw-bold display-5 ps-5">Explora y encuentra
+          cerca de Ti!</h2>
+      </div>
+      <div class="fondomapa">
+        <p class="text-center text-white fs-6 text p-3">En nuestra sección de mapas, te invitamos a explorar las
+          ubicaciones exactas donde se han reportado mascotas perdidas o encontradas. Este mapa interactivo te proporciona una
+          visión geográfica de la búsqueda en curso.
+          ¡Descubre historias conmovedoras y únete a la comunidad en acción!</p>
+      </div>
+    </section>
+    <section>
+      <!-- About: Luz -->
+      <div class="container textosecundario pt-4 mt-4 mb-4">
+        <div class="text-center">
+          <h1 class="display-4 fw-bold mt-5">¡Bienvenidos a PetFinder!</h1>
+          <p class="p-3 fs-5 text">En <span class="coloracento fw-bold">PetFinder</span>, entendemos lo importante que
+            son tus mascotas para ti.
+            Nuestra misión es ayudarte a reunirte con tus seres queridos peludos perdidos
+            y brindar apoyo a la comunidad de amantes de los animales.</p>
+        </div>
+        <h2 class="text-start align-items-md-start">¿Cómo funciona?</h2>
+        <ul class="list-group list-group-flush pb-3">
+          <li class="list-group-item"><img src="./img/pawprint.png" alt="pawprint" width="40px"><span
+              class="textosecundario"> <b> Regístrate: </b> Crea tu perfil y comparte detalles sobre tu mascota.</span>
+          </li>
+          <li class="list-group-item"><img src="./img/pawprint.png" alt="pawprint" width="40px"><span
+              class="textosecundario"> <b> Búsqueda Simple:</b> Explora mascotas perdidas cercanas a tu
+              ubicación.</span>
+          </li>
+          <li class="list-group-item"><img src="./img/pawprint.png" alt="pawprint" width="40px"><span
+              class="textosecundario"> <b> Notificaciones Instantáneas: </b> Recibe notificaciones cuando haya
+              coincidencias con mascotas encontradas.</span></li>
+          <li class="list-group-item"><img src="./img/pawprint.png" alt="pawprint" width="40px"><span
+              class="textosecundario"> <b> Comunidad Solidaria: </b> Conéctate con otros amantes de los animales para
+              compartir información y brindar apoyo.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-    <!-- Footer: LUZ -->
-    <!-- Fin Footer -->
+  <!-- Fin Main -->
 
-    <!-- Enlace a Bootstrap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Footer: LUZ -->
+  <footer class="footer d-flex flex-row flex-wrap align-items-center p-3 text-secondary">
+    <div class="col-1 text-end">
+      <img src="./icons/c-circle.svg" class="filter" role="img" alt="copyright" width="32" height="32"
+        fill="currentColor">
+    </div>
+    <div class="col-9 align-content-center pt-2 ps-1 justify-content-start text-start">
+      <p class="fs-6 text text-white-50">Todos los Derechos Reservados</p>
+    </div>
+    <div class="col justify-content-around p-2">
+      <a href="https://www.instagram.com/petfinder-buscador-de-mascotas/" target="_blank"><img class="text-white filter"
+          src="./icons/instagram.svg" role="img" alt="instagram" width="32" height="32" fill="currentColor"></a>
+      <!--red social-->
+      <a href="https://www.facebook.com/petfinder.net" target="_blank"><img class="text-white filter"
+          src="./icons/facebook.svg" role="img" alt="facebook" width="32" height="32" fill="currentColor"></a>
+      <!--red social-->
+      <a href="https://www.twitter.com/petfinder-buscador-de-mascotas" target="_blank"><img class="text-white filter"
+          src="./icons/twitter-x.svg" role="img" alt="twitter" width="32" height="32" fill="currentColor"></a>
+    </div><!--red social-->
+  </footer>
 
-    <!-- Enlace a Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <!-- Fin Footer -->
+
+  <!-- Enlace a Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <!-- Enlace a Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>  
+</body>
+
 </html>
