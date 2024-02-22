@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime
 from app import db
-from app.auth.models.user import User
-from app.auth.schemas.user import user_schema
+from app.user.models import User
+from app.user.schemas import user_schema, users_schema
 from marshmallow.exceptions import ValidationError
 from werkzeug.exceptions import BadRequest
 import re

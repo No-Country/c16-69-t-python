@@ -18,8 +18,8 @@ def root():
     return jsonify(message=f'Welcome to {app.config["APP_NAME"]}')
 
 # Import the Blueprints
-from app.auth.views.auth import bp as auth_bp
-from app.user.views.user_view import bp as users_bp
+from app.auth.view import bp as auth_bp
+from app.user.view import bp as users_bp
 
 # Register the blueprint of the modules.
 app.register_blueprint(auth_bp, url_prefix=f'{app.config["APP_ROOT"]}/auth')

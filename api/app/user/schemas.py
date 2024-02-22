@@ -3,7 +3,7 @@ import copy
 import re
 from marshmallow import fields, validate, ValidationError
 from app import ma
-from app.auth.models.user import User
+from app.user.models import User
 
 VALID_EMAIL_PATTERN = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
