@@ -83,3 +83,8 @@ var swiper = new Swiper('.swiper-container', {
 	  },
 	} 
     });
+
+
+    function Registrarse() {
+      window.location.href = 'html/register-login.html'; 
+    }
