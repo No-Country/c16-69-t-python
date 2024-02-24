@@ -109,7 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       // Maneja la respuesta del backend según tus necesidades
       console.log('Respuesta del backend:', data);
-      // Puedes redirigir a otra página o mostrar un mensaje de éxito aquí
+      window.location.href = '/index.html'  // Redirige a index.html
+
     })
     .catch(error => {
       console.error('Error al enviar los datos:', error);
