@@ -40,3 +40,13 @@
     font-family: 'Poppins', sans-serif;
    
 }
+
+.fgr-valid {
+	border: 3px solid #187e29;
+}
+
+.fgr-invalid {
+	border: 3px solid #8b0000;
+    border-radius: 11px;
+    display: none;
+}

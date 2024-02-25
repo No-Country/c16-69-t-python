@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!--Link a CSS-->
-    <link rel="stylesheet" href="../publicaciones/css/publicacionStyle.css">
+    <link rel="stylesheet" href="../css/publicacionStyle.css">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -15,85 +15,84 @@
 
 <body>
     <header>
-        <!-- place navbar here -->
+        
     </header>
     <main>
         <div class="container vh-100">
             <h1 class="titulo display-6 fw-medium">Crea tu aviso</h1>
 
             <div class="container h-50 p-1">
-                <form action="/crearAviso" method="post" id="aviso">
+                <form action="" method="post" enctype="multipart/form-data" class="formulario" id="formulario">
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-6 align-items-center justify-content-center h-100">
-                                <img src="./img/logo.png" class="imagenPet img-fluid w-100 mb-2" loading="lazy"
+                                <img src="../img/logo.png" class="imagenPet img-fluid w-100 mb-2" id="picturePet" loading="lazy"
                                     alt="imagen_de_mascota">
                                 <div class="input-group text-secondary w-100 justify-content-center">
-                                    <input type="file" class="form-control text-secondary required" id="archivos"
-                                        aria-describedby="file" aria-label="Upload">
-                                    <button class="btn btn-light text-secondary" type="button"
-                                        id="archivos">Agregar</button>
+                                    <input type="file" class="form-control text-secondary fgr-invalid required" name="picture" id="picture"
+                                        aria-describedby="file" value="imagen_de_mascota" aria-label="Upload">
+                                    <label class="input-group-text text-secondary" for="picture"></label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body p-3">
-                                    <div class="input-group mb-3 mt-4">
-                                        <select class="form-select" id="tipo">
+                                    <div class="input-group mb-3 mt-4 fgr-invalid">
+                                        <select class="form-select" id="type" name="type">
                                             <option selected>Elegi...</option>
                                             <option value="1">Buscado</option>
                                             <option value="2">Encontrado</option>
                                         </select>
-                                        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                                        <label class="input-group-text" for="type">Options</label>
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="datetime-local" class="form-control required" placeholder="Fecha"
+                                            <input type="datetime-local" name="date_lost"  class="form-control fgr-invalid required" placeholder="Fecha" id="date_lost"
                                                 aria-label="fecha">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control required" placeholder="Zona"
+                                            <input type="text" name="location" class="form-control fgr-invalid required" placeholder="Zona" id="location"
                                                 aria-label="Zona">
                                         </div>
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control required" placeholder="Nombre de Mascota"
+                                            <input type="text" class="form-control fgr-invalid required" name="namePet" minlength="2" placeholder="Nombre de Mascota" id="namePet"
                                                 aria-label="mascota">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control required" placeholder="Raza"
+                                            <input type="text" class="form-control fgr-invalid required" name="breed" placeholder="Raza" id="breed"
                                                 aria-label="raza">
                                         </div>
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control required" placeholder="Edad de Mascota"
+                                            <input type="text" class="form-control fgr-invalid required" name="age" placeholder="Edad de Mascota" id="age"
                                                 aria-label="Edad_de_Mascota">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control required" placeholder="Tamaño"
+                                            <input type="text" class="form-control fgr-invalid required" name="size" placeholder="Tamaño" id="size"
                                                 aria-label="Tamagno">
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Redes Sociales</span>
-                                        <input type="text" aria-label="Primera red social" class="form-control">
-                                        <input type="text" aria-label="Segunda red social" class="form-control">
+                                        <input type="text" aria-label="Primera red social" class="form-control fgr-invalid" id="network1" name="network1">
+                                        <input type="text" aria-label="Segunda red social" class="form-control fgr-invalid"id="network2" name="network2">
                                     </div>
                                     <div class="mb-3">
-                                        <textarea class="form-control" id="descripcion" rows="4"
-                                            placeholder="Descripcion" aria-label="descripcion"></textarea>
+                                        <textarea class="form-control fgr-invalid" id="description" rows="4"
+                                            placeholder="Descripcion" aria-label="descripcion" name="description"></textarea>
                                     </div>
                                     <div class="input-group mb-5">
-                                        <span class="input-group-text" id="hashtags">#</span>
-                                        <input type="text" class="form-control" placeholder="Etiquetas"
+                                        <span class="input-group-text">#</span>
+                                        <input type="text" class="form-control fgr-invalid" id="hashtags" placeholder="Etiquetas" name="hashtags" id="hashtags"
                                             aria-label="Etiquetas" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="botonPet text-center col g-2 mb-3">
-                                        <button type="button"
-                                            class="btn btn-info text-white me-2">Enviar</button>
-                                        <button type="button"
-                                            class="btn btn-info text-white ms-2">Cancelar</button>
+                                        <button type="submit" value="submit" name="submit"
+                                            class="btn btn-info text-white me-2"onclick="validarFormulario()">Enviar</button>
+                                        <button type="reset" value=""
+                                            class="btn btn-info text-white ms-2"onclick="cancelarRegistro()">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
@@ -101,11 +100,6 @@
                     </div>
                 </form>
             </div>
-
-
-
-
-
         </div>
     </main>
     <footer>
@@ -119,6 +113,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+    <script src="../js/registrarPet.js"></script>
 </body>
 
 </html>
