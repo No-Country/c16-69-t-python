@@ -1,9 +1,6 @@
 from app import jwt
 from app.user.models import User
 
-@jwt.user_identity_loader
-def user_identity_lookup(user):
-    return user.username
 
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):

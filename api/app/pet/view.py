@@ -9,10 +9,10 @@ import re
 
 bp = Blueprint('pets', __name__)
 
-@bp.route('/register', methods=['POST'])
+@bp.route('/', methods=['POST'])
 def register_pet():
     """
-    Endpoint POST http://127.0.0.1:5000/api/pets/register to create a new pet.
+    Endpoint POST http://127.0.0.1:5000/api/pets/ to create a new pet.
 
     Required:
     - name          (str)   Unique pet name.
@@ -82,10 +82,10 @@ def get_pets():
         # Handle the error and return an appropriate error message.
         return jsonify({"message": "Error al listar mascotas.", "error": str(e)}), 500
 
-@bp.route('/pet/<string:pet_id>', methods=['GET'])
+@bp.route('/<string:pet_id>', methods=['GET'])
 def get_pet_by_id(pet_id):
     """
-    Endpoint GET http://127.0.0.1:5000/api/pets/pet/<string:pet_id> to get a pet by ID.
+    Endpoint GET http://127.0.0.1:5000/api/pets/<string:pet_id> to get a pet by ID.
     
     Required:
     - pet_id       (str)   Unique pet id.
@@ -111,10 +111,10 @@ def get_pet_by_id(pet_id):
         # Handle schema validation errors.
         return jsonify(err.messages), 400
 
-@bp.route('/pet/<string:pet_id>', methods=['DELETE'])
+@bp.route('/<string:pet_id>', methods=['DELETE'])
 def delete_pet_by_id(pet_id):
     """
-    Endpoint DELETE http://127.0.0.1:5000/api/pets/pet/<string:pet_id> to delete a pet by ID.
+    Endpoint DELETE http://127.0.0.1:5000/api/pets/<string:pet_id> to delete a pet by ID.
     
     Required:
     - pet_id       (str)   Unique pet id.
@@ -139,10 +139,10 @@ def delete_pet_by_id(pet_id):
         # Handle any other errors that may occur.
         return jsonify(message="Ocurrió un error al intentar eliminar la mascota."), 500
 
-@bp.route('/pet/<string:pet_id>', methods=['PUT'])
+@bp.route('/<string:pet_id>', methods=['PUT'])
 def update_pet_by_id(pet_id):
     """
-    Endpoint PUT http://127.0.0.1:5000/api/pets/pet/<string:pet_id> to update the data of a pet by ID.
+    Endpoint PUT http://127.0.0.1:5000/api/pets/<string:pet_id> to update the data of a pet by ID.
     
     Required:
     - pet_id       (str)   Unique pet id.
