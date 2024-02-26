@@ -1,13 +1,13 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime
 from app import db
-from app.pet.models import Pet
-from app.pet.schemas import pet_schema, pets_schema
+from app.pet.models import Pet, PetPhotos
+from app.pet.schemas import pet_schema, pets_schema, pet_photo_schema
 from marshmallow.exceptions import ValidationError
 from werkzeug.exceptions import BadRequest
-import re
 
 bp = Blueprint('pets', __name__)
+
 
 @bp.route('/', methods=['POST'])
 def register_pet():
@@ -177,15 +177,36 @@ def update_pet_by_id(pet_id):
         # Handle any other errors that may occur.
         return jsonify(message="Ocurrió un error al intentar actualizar la mascota."), 500
 
-@bp.route('/pet_image/<string:pet_id>', methods=['POST'])
-def register_pet_image_by_id(pet_id):
+@bp.route('/<string:pet_id>/photo', methods=['POST'])
+def upload_pet_image_by_id(pet_id):
     """
-    Endpoint PUT http://127.0.0.1:5000/api/pets/pet/<string:pet_id> to update the data of a pet by ID.
+    Endpoint POST http://127.0.0.1:5000/api/pets/<string:pet_id>/photo to upload photo for a pet by ID.
     
     Required:
     - pet_id       (str)   Unique pet id.
+    - photo_url    (str)   Url image of the pet.
 
     Return:
     - pet_data     (dict)  Pet data.
     """
-    pass
+    try:  
+        photo_url = request.json.get("photo_url")
+        
+        # Check if the pet exists
+        pet = Pet.query.filter_by(id=pet_id).first()
+        if not pet:
+            return jsonify(message="Mascota no encontrada."), 404
+
+        # Create a PetPhotos instance with the image URL and pet ID
+        pet_photo = PetPhotos(pet_id=pet_id, photo_url=photo_url)
+
+        # Add the PetPhotos instance to the database
+        db.session.add(pet_photo)
+        db.session.commit()
+
+        # Return the pet data with the new image as a response
+        pet_data = pet_photo_schema.dump(pet_photo)
+        return jsonify(pet_data), 200
+    except Exception as e:
+        # Handle any other errors that may occur
+        return jsonify(message="Ocurrió un error al intentar cargar la imagen.", error=str(e)), 500
