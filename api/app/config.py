@@ -11,3 +11,6 @@ class Settings:
     # Configuración SQLAlchemy
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Config imgbb apikey
+    APIKEY_IMGBB = "b8630093227cc0bf57935c135bbf6f9c"

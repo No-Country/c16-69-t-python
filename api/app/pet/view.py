@@ -176,3 +176,16 @@ def update_pet_by_id(pet_id):
     except Exception as e:
         # Handle any other errors that may occur.
         return jsonify(message="Ocurrió un error al intentar actualizar la mascota."), 500
+
+@bp.route('/pet_image/<string:pet_id>', methods=['POST'])
+def register_pet_image_by_id(pet_id):
+    """
+    Endpoint PUT http://127.0.0.1:5000/api/pets/pet/<string:pet_id> to update the data of a pet by ID.
+    
+    Required:
+    - pet_id       (str)   Unique pet id.
+
+    Return:
+    - pet_data     (dict)  Pet data.
+    """
+    pass
