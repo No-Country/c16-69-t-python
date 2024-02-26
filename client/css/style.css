@@ -228,7 +228,7 @@
 }
 
 .main-us {
-  height: 100vh;
+  height: 90vh;
 }
 
 .container {
@@ -327,4 +327,36 @@
   position: absolute;
   top: -20vh;
  
+}
+
+.curve p{
+  position: relative;
+ transform: translateY(70%);
+ width: 50%;
+ margin: auto;
+ font-family: "Open Sans", sans-serif;
+  font-size: 1.3vmax;
+}
+
+
+/* .fondomapa {
+  padding: 20px;
+  background-color: #ff5722;
+} */
+
+.textosecundario {
+  color: #757575;
+}
+
+.coloracento {
+  color: #ff5722;
+}
+
+.filter {
+  filter: invert(51%) sepia(96%) saturate(779%) hue-rotate(0deg) brightness(103%) contrast(104%);
+}
+
+.footer {
+  background-color: #ff5722;
+  bottom: 0;
 }

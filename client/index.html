@@ -17,11 +17,10 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-   
 
     <!-- Enlace a hojas de estilo -->
     <link rel="stylesheet" href="css/style.css" />
-   
+
     <!-- Enlace a js -->
     <script src="js/script-main.js" defer></script>
   </head>
@@ -60,7 +59,8 @@
             </ul>
             <!-- <form class="d-flex" role="search"> -->
 
-            <button id="btn-registro" class="btn">Registrate</button>
+            <button id="btn-registro" class="btn" onclick="Registrarse()">Registrate</button>
+
             <!-- </form> -->
           </div>
         </div>
@@ -81,7 +81,9 @@
           </p>
 
           <div class="home-btns">
-           <button class="btn">Registrate</button>
+
+            <button class="btn" onclick="Registrarse()">Registrate</button>
+
             <button class="btn btn-logIn">Ingresar</button>
           </div>
         </div>
@@ -119,9 +121,9 @@
                     <p>Centro</p>
                     <p>12/02/2024</p>
                   </div>
-                 <div class="card-link">
-                  <a href="#" class="btn btn-link">Ver más</a>
-                </div>
+                  <div class="card-link">
+                    <a href="#" class="btn btn-link">Ver más</a>
+                  </div>
                 </div>
               </div>
               <div class="swiper-slide">
@@ -194,26 +196,153 @@
 
       <section class="main-map" id="map">
         <!-- Map: Luz -->
-       
-        <div class="curve">
-        
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 1000">
-            <path fill="#ff9800" fill-opacity="1" d="M0,128L80,122.7C160,117,320,107,480,85.3C640,64,800,32,960,37.3C1120,43,1280,85,1360,106.7L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-          </svg>
+        <div
+          class="container-fluid position-relative bg-secondary-subtle object-fit-cover"
+        >
+          <img
+            src="./img/mapa.png"
+            alt="map"
+            id="map"
+            class="img-fluid ratio ratio-16x9 mx-auto d-block"
+          />
+          <h2
+            class="textosecundario d-block position-absolute top-50 start-0 fw-bold display-5 ps-5"
+          >
+            Explora y encuentra cerca de Ti!
+          </h2>
         </div>
-        
-        
-       
-       
+     
+
+        <div class="curve">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 600">
+            <path
+              fill="#ff9800"
+              fill-opacity="1"
+              d="M0,128L80,122.7C160,117,320,107,480,85.3C640,64,800,32,960,37.3C1120,43,1280,85,1360,106.7L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+            ></path>
+          </svg>
+          <p class="text-center text-white fs-6 text p-3">
+            En nuestra sección de mapas, te invitamos a explorar las ubicaciones
+            exactas donde se han reportado mascotas perdidas o encontradas. Este
+            mapa interactivo te proporciona una visión geográfica de la búsqueda
+            en curso. <br> <strong>¡Descubre historias conmovedoras y únete a la comunidad en
+              acción!</strong>
+          </p>
+        </div>
       </section>
       <section class="main-us" id="us">
         <!-- About: Luz -->
+        <div class="container textosecundario pt-4 mt-4 mb-4">
+          <div class="text-center">
+            <h1 class="display-4 fw-bold mt-5">¡Bienvenidos a PetFinder!</h1>
+            <p class="p-3 fs-5 text">
+              En <span class="coloracento fw-bold">PetFinder</span>, entendemos
+              lo importante que son tus mascotas para ti. Nuestra misión es
+              ayudarte a reunirte con tus seres queridos peludos perdidos y
+              brindar apoyo a la comunidad de amantes de los animales.
+            </p>
+          </div>
+          <h2 class="text-start align-items-md-start">¿Cómo funciona?</h2>
+          <ul class="list-group list-group-flush pb-3">
+            <li class="list-group-item">
+              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+                class="textosecundario"
+              >
+                <b> Regístrate: </b> Crea tu perfil y comparte detalles sobre tu
+                mascota.</span
+              >
+            </li>
+            <li class="list-group-item">
+              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+                class="textosecundario"
+              >
+                <b> Búsqueda Simple:</b> Explora mascotas perdidas cercanas a tu
+                ubicación.</span
+              >
+            </li>
+            <li class="list-group-item">
+              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+                class="textosecundario"
+              >
+                <b> Notificaciones Instantáneas: </b> Recibe notificaciones
+                cuando haya coincidencias con mascotas encontradas.</span
+              >
+            </li>
+            <li class="list-group-item">
+              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+                class="textosecundario"
+              >
+                <b> Comunidad Solidaria: </b> Conéctate con otros amantes de los
+                animales para compartir información y brindar apoyo.</span
+              >
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
 
     <!-- Fin Main -->
 
     <!-- Footer: LUZ -->
+    <footer
+      class="footer d-flex flex-row flex-wrap align-items-center p-3 text-secondary"
+    >
+      <div class="col-1 text-end">
+        <img
+          src="./icons/c-circle.svg"
+          class="filter"
+          role="img"
+          alt="copyright"
+          width="32"
+          height="32"
+          fill="currentColor"
+        />
+      </div>
+      <div
+        class="col-9 align-content-center pt-2 ps-1 justify-content-start text-start"
+      >
+        <p class="fs-6 text text-white-50">Todos los Derechos Reservados</p>
+      </div>
+      <div class="col justify-content-around p-2">
+        <a
+          href="https://www.instagram.com/petfinder-buscador-de-mascotas/"
+          target="_blank"
+          ><img
+            class="text-white filter"
+            src="./icons/instagram.svg"
+            role="img"
+            alt="instagram"
+            width="32"
+            height="32"
+            fill="currentColor"
+        /></a>
+        <!--red social-->
+        <a href="https://www.facebook.com/petfinder.net" target="_blank"
+          ><img
+            class="text-white filter"
+            src="./icons/facebook.svg"
+            role="img"
+            alt="facebook"
+            width="32"
+            height="32"
+            fill="currentColor"
+        /></a>
+        <!--red social-->
+        <a
+          href="https://www.twitter.com/petfinder-buscador-de-mascotas"
+          target="_blank"
+          ><img
+            class="text-white filter"
+            src="./icons/twitter-x.svg"
+            role="img"
+            alt="twitter"
+            width="32"
+            height="32"
+            fill="currentColor"
+        /></a>
+      </div>
+      <!--red social-->
+    </footer>
     <!-- Fin Footer -->
 
     <!-- Enlace a Bootstrap -->
