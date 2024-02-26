@@ -29,6 +29,7 @@
 
 .form-info {
   width: 80%;
+ 
   margin: auto;
 }
 
@@ -42,9 +43,11 @@
   margin-top: 3vh;
 }
 
-.form-info p {
+.form-info p, .form-info a {
   font-family: "Open Sans", sans-serif;
   font-size: 1.3vmax;
+  display: inline-block;
+  padding-right: 1rem;
 }
 
 .link {
@@ -60,6 +63,16 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.loginForm{
+  width: 80%;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
 }
 
 .btn-container {

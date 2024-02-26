@@ -14,17 +14,13 @@
             <img src="../img/logo.png" class="img-fluid wave-img" alt="Logo Petfinder" />
         </div>  
     </div> 
-        <div class="container-form">
-                 
+    <div class="container-form">              
           <div class="form-info">
-            <h2>Registrate</h2>
-            <p>¿Ya tenenes cuenta? <a href="#" class="link">Ingresá</a></p>
+            <h2></h2>
+            <p></p><a href="#" class="link" ></a>
           </div>
           <!-- Formulario de Registro -->
-          <form action="/signup" method="post" id="registerForm" class="registerForm">
-              <!-- Agrega tus campos de registro aquí -->
-              <!-- Ejemplo: -->
-              
+          <form  method="post" id="registerForm" class="registerForm">
                  
                   <input type="text" class="form-control input" id="apellido" placeholder="Apellido" required>
                   <input type="text" class="form-control input" id="nombre" placeholder="Nombre" required>
@@ -42,39 +38,32 @@
               
                   <div class="btn-container">
                     <button type="submit" class="btn btn-primary">Registrarme</button>
-                    <button class="btn btn-primary" onclick="cancelarRegistro()">Cancelar</button>
+                    <button class="btn btn-primary" onclick="cancelar()">Cancelar</button>
                   </div>
                   
           </form>
 
           <!-- Formulario de Inicio de Sesión -->
-          <form action="/login" method="post" id="loginForm" class="hidden">
-              <!-- Agrega tus campos de inicio de sesión aquí -->
-              <!-- Ejemplo: -->
-              <div class="mb-3">
-                  <label for="loginUsername" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username">
-              </div>
-              <!-- Otros campos de inicio de sesión -->
-
-              <button type="submit" class="btn btn-primary">Login</button>
+          <form method="post" id="loginForm" class="loginForm hidden">
+              
+              
+              <input type="email" class="form-control input" id="email" placeholder="Correo Electrónico" required>
+                 
+                  <input type="password" class="form-control input" id="psw" placeholder="Contraseña" required>
+                  <div class="btn-container">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button class="btn btn-primary" onclick="cancelar()">Cancelar</button>
+                  </div>
+            
           </form>
       </div>
   </div>
 
-  <!-- Bootstrap JS (puedes descargarlo o incluirlo desde CDN) -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   <script src="../js/register.js"></script>
-             <!--  avatar_url	string	no (opcional)
-              username	string	si
-              email	string	si
-              first_name	string	si
-              last_name	string	si
-              address	string	si
-              password	string	si -->
-          </div>
-    </div>
+  
+            
+          
    
   </body>
 </html>
