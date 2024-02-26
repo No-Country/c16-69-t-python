@@ -40,13 +40,17 @@
     font-family: 'Poppins', sans-serif;
    
 }
+/* Para la Validacion*/
 
-.fgr-valid {
+.fgr-valid .f-input {
 	border: 3px solid #187e29;
+    border-radius: 11px;
+    
+    
 }
 
-.fgr-invalid {
+.fgr-invalid .f-input{
 	border: 3px solid #8b0000;
     border-radius: 11px;
-    display: none;
+    
 }
