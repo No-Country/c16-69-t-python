@@ -9,10 +9,10 @@ import re
 
 bp = Blueprint('users', __name__)
 
-@bp.route('/user/<string:user_id>', methods=['GET'])
+@bp.route('/<string:user_id>', methods=['GET'])
 def get_user_by_id(user_id):
     """
-    Endpoint GET http://127.0.0.1:5000/api/users/user/<string:user_id> to get a user by ID.
+    Endpoint GET http://127.0.0.1:5000/api/users/<string:user_id> to get a user by ID.
     
     Required:
     - user_id       (str)   Unique user id.
