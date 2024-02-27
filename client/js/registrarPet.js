@@ -3,12 +3,23 @@ const inputs = document.querySelectorAll('#formulario input');
 
 // Tomo los datos que ingresa el usuario
 
+document
+    .getElementById("formulario")
+    .addEventListener("submit", function (event) {
+      console.log("aqui..." + event)
+      event.preventDefault(); // Evita el envío del formulario
+
+      // Registra al usuario
+      registrarPet();
+    });
+
+
 function registrarPet () {
-    const picturePet = document.getElementById('picturePet').value;
+    const image_url = document.getElementById('picturePet').value;
     const type = document.getElementById('type').value;
     const date_lost = document.getElementById('date_lost').value;
     const location = document.getElementById('location').value;
-    const namePet = document.getElementById('namePet').value;
+    const name = document.getElementById('namePet').value;
     const breed = document.getElementById('breed').value;
     const age = document.getElementById('age').value;
     const size = document.getElementById('size').value;
@@ -24,22 +35,23 @@ function registrarPet () {
     // Armo un objeto con los datos a registrar
 
     const datosPet = {
-        picturePet,
+        image_url,
         type,
         date_lost,
         location,
-        namePet,
+        name,
         breed,
         age,
         size,
-        facebook,
-        instagram,
+        //facebook,
+        //instagram,
         description,
-        hashtags
+        //hashtags
     };
 
 // Solicitud de POST
-fetch('http://127.0.0.1:5000/api/pets/register', {
+
+fetch("http://127.0.0.1:5000/api/pets/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -54,15 +66,18 @@ fetch('http://127.0.0.1:5000/api/pets/register', {
     })
     .then((data) => {
       console.log("Respuesta del backend:", data);
-      window.location.href = "/index.html"; // Redirige a index.html
+      window.location.href = "../index.html"; // Redirige a index.html
     })
     .catch((error) => {
       console.error("Error al enviar los datos:", error);
     });
-};
+}
+
+
+
+
+
 //vuelve al home si se cancela la operacion
 function cancelarRegistro() {
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
 };
-
-
