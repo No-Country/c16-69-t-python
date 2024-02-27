@@ -3,7 +3,7 @@ import copy
 import re
 from marshmallow import fields, validate, ValidationError
 from app import ma
-from app.user.models import User
+from app.user.models import User, Notification
 
 VALID_EMAIL_PATTERN = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
@@ -74,3 +74,19 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+
+
+class NotificationSchema(ma.SQLAlchemyAutoSchema):
+
+    id = fields.String(dump_only=True) # Este campo se usa solo para volcar datos
+    user_id = fields.String()
+    created_at = fields.DateTime(dump_only=True)
+    message = fields.String()
+
+    class Meta:
+        model = Notification
+        fields = ['id', 'user_id', 'created_at', 'message']
+        load_instance = True
+
+notification_schema = NotificationSchema()
+notifications_schema = NotificationSchema(many=True)
