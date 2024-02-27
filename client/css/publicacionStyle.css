@@ -31,26 +31,14 @@
     
     
 }
-.imagenPet {
-    background-color: #ff9800;
-    opacity: .5;
-}
+
+
+.picturePet {
+    background-image: url(../img/logo.png);
+}*/
 
 .botonPet {
     font-family: 'Poppins', sans-serif;
    
 }
-/* Para la Validacion*/
 
-.fgr-valid .f-input {
-	border: 3px solid #187e29;
-    border-radius: 11px;
-    
-    
-}
-
-.fgr-invalid .f-input{
-	border: 3px solid #8b0000;
-    border-radius: 11px;
-    
-}

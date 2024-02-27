@@ -26,18 +26,18 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-6 align-items-center justify-content-center h-100">
-                                <img src="../img/logo.png" class="imagenPet img-fluid w-100 mb-2" id="picturePet" loading="lazy"
-                                    alt="imagen_de_mascota">
+                                <img src="" class="picturePet img-fluid w-100 mb-2" id="picturePet" loading="lazy"
+                                    alt="">
                                 <div class="input-group text-secondary w-100 justify-content-center">
-                                    <input type="file" class="form-control text-secondary f-input fgr-invalid fgr-valid required" name="picture" id="picture"
+                                    <input type="file" class="form-control text-secondary" required name="picturePet" id="picturePet"
                                         aria-describedby="file" value="imagen_de_mascota" aria-label="Upload">
-                                    <label class="input-group-text text-secondary" for="picture"></label>
+                                    <label class="input-group-text text-secondary" for="picturePet"></label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body p-3">
                                     <div class="input-group mb-3 mt-4">
-                                        <select class="form-select f-input fgr-invalid fgr-valid" id="type" name="type">
+                                        <select class="form-select" id="type" name="type" required>
                                             <option selected>Elegi...</option>
                                             <option value="1">Buscado</option>
                                             <option value="2">Encontrado</option>
@@ -46,46 +46,46 @@
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="datetime-local" name="date_lost"  class="form-control f-input fgr-invalid fgr-valid required" placeholder="Fecha" id="date_lost"
+                                            <input type="datetime-local" name="date_lost" required  class="form-control" placeholder="Fecha" id="date_lost"
                                                 aria-label="fecha">
                                         </div>
                                         <div class="col">
-                                            <input type="text" name="location" class="form-control f-input fgr-invalid fgr-valid required" placeholder="Zona" id="location"
+                                            <input type="text" name="location" class="form-control" required placeholder="Zona" id="location"
                                                 aria-label="Zona">
                                         </div>
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control f-input fgr-invalid fgr-valid required" name="namePet" minlength="2" placeholder="Nombre de Mascota" id="namePet"
+                                            <input type="text" class="form-control" required name="namePet" minlength="2" placeholder="Nombre de Mascota" id="namePet"
                                                 aria-label="mascota">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control f-input fgr-invalid fgr-valid required" name="breed" placeholder="Raza" id="breed"
+                                            <input type="text" class="form-control" required name="breed" placeholder="Raza" id="breed"
                                                 aria-label="raza">
                                         </div>
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control f-input fgr-invalid fgr-valid required" name="age" placeholder="Edad de Mascota" id="age"
+                                            <input type="text" class="form-control" required name="age" placeholder="Edad de Mascota" id="age"
                                                 aria-label="Edad_de_Mascota">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control f-input fgr-invalid fgr-valid required" name="size" placeholder="Tamaño" id="size"
-                                                aria-label="Tamagno">
+                                            <input type="text" class="form-control" required name="size" placeholder="Tamaño" id="size"
+                                                aria-label="size">
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Redes Sociales</span>
-                                        <input type="text" aria-label="Facebook" class="form-control f-input fgr-invalid fgr-valid" id="facebook" name="facebook">
-                                        <input type="text" aria-label="Instagram" class="form-control f-input fgr-invalid fgr-valid"id="instagram" name="instagram">
+                                        <input type="text" aria-label="Facebook" class="form-control" id="facebook" name="facebook">
+                                        <input type="text" aria-label="Instagram" class="form-control"id="instagram" name="instagram">
                                     </div>
                                     <div class="mb-3">
-                                        <textarea class="form-control f-input fgr-invalid fgr-valid" id="description" rows="4"
+                                        <textarea class="form-control" id="description" rows="4"
                                             placeholder="Descripcion" aria-label="descripcion" name="description"></textarea>
                                     </div>
                                     <div class="input-group mb-5">
                                         <span class="input-group-text">#</span>
-                                        <input type="text" class="form-control f-input fgr-invalid fgr-valid" id="hashtags" placeholder="Etiquetas" name="hashtags" id="hashtags"
+                                        <input type="text" class="form-control" id="hashtags" placeholder="Etiquetas" name="hashtags" id="hashtags"
                                             aria-label="Etiquetas" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="botonPet text-center col g-2 mb-3">
