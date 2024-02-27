@@ -129,3 +129,33 @@
 .hidden {
   display: none;
 }
+
+.btn{
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1vmax;
+  font-weight: 500;
+  color: white;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  background-color: #ff5722;
+  border-radius: 15px;
+  border: none;
+  border: 2px solid #ff5722;
+
+  width: 11vw;
+}
+
+
+.btn:hover{
+  background-color: #ff9800;
+  border: 2px solid #ff5722;
+  color: white;
+  
+}
+
+.btn-cancelar{
+  background-color: white;
+  color: black;
+}

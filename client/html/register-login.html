@@ -37,8 +37,8 @@
                   </div>
               
                   <div class="btn-container">
-                    <button type="submit" class="btn btn-primary">Registrarme</button>
-                    <button class="btn btn-primary" onclick="cancelar()">Cancelar</button>
+                    <button type="submit" class="btn">Registrarme</button>
+                    <button class="btn btn-cancelar" onclick="cancelar()">Cancelar</button>
                   </div>
                   
           </form>
@@ -47,12 +47,12 @@
           <form method="post" id="loginForm" class="loginForm hidden">
               
               
-              <input type="email" class="form-control input" id="email" placeholder="Correo Electrónico" required>
+              <input type="text" class="form-control input" id="user_log" placeholder="Nombre de usuario" required>
                  
-                  <input type="password" class="form-control input" id="psw" placeholder="Contraseña" required>
+                  <input type="password" class="form-control input" id="psw_log" placeholder="Contraseña" required>
                   <div class="btn-container">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <button class="btn btn-primary" onclick="cancelar()">Cancelar</button>
+                    <button type="submit" class="btn">Ingresar</button>
+                    <button class="btn btn-cancelar" onclick="cancelar()">Cancelar</button>
                   </div>
             
           </form>
@@ -61,7 +61,7 @@
 
 
   <script src="../js/register.js"></script>
-  
+  <script src="../js/login.js"></script>
             
           
    

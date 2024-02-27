@@ -113,7 +113,14 @@ function registrarUsuario() {
     })
     .then((data) => {
       console.log("Respuesta del backend:", data);
-      window.location.href = "/index.html"; // Redirige a index.html
+      alert("Usuario registrado con éxito. Ahora puedes iniciar sesión.");
+
+      // Hace visible el formulario de inicio de sesión
+      document.getElementById("loginForm").classList.remove("hidden");
+
+      // Oculta el formulario de registro si es necesario
+      document.getElementById("registerForm").classList.add("hidden");
+      localStorage.setItem("formType", "loginForm");
     })
     .catch((error) => {
       console.error("Error al enviar los datos:", error);
@@ -136,71 +143,53 @@ document.addEventListener("DOMContentLoaded", function () {
   const subtitleElement = formInfo.querySelector("p");
   const linkElement = formInfo.querySelector(".link");
 
- 
-
   function toggleForms() {
-    
     if (formType === "registerForm") {
-     
       titleElement.textContent = "Regístrate";
       subtitleElement.textContent = "¿Ya tenés cuenta?";
       linkElement.textContent = "Ingresá";
 
       registerForm.classList.remove("hidden");
       loginForm.classList.add("hidden");
-    
-      
-
     } else if (formType === "loginForm") {
-      
       titleElement.textContent = "Inicia Sesión";
       subtitleElement.textContent = "¿No tenés cuenta?";
       linkElement.textContent = "Regístrate";
 
       registerForm.classList.add("hidden");
       loginForm.classList.remove("hidden");
-      
     }
   }
 
-  
-
   // Inicializar según el tipo de formulario recuperado del localStorage
-  if (formType === 'registerForm' || formType === 'loginForm') {
+  if (formType === "registerForm" || formType === "loginForm") {
     toggleForms();
   }
- 
-   // Asignar evento de clic al enlace desde JavaScript
- linkElement.addEventListener("click", function (event) {
-  event.preventDefault(); 
-  
-  if (formType === "registerForm") {
-    titleElement.textContent = "Inicia Sesión";
-    subtitleElement.textContent = "¿No tenés cuenta?";
-    linkElement.textContent = "Regístrate";
 
-    registerForm.classList.add("hidden");
-    loginForm.classList.remove("hidden");
+  // Asignar evento de clic al enlace desde JavaScript
+  linkElement.addEventListener("click", function (event) {
+    event.preventDefault();
 
-     localStorage.setItem("formType", 'loginForm');
-  
-    
+    if (formType === "registerForm") {
+      titleElement.textContent = "Inicia Sesión";
+      subtitleElement.textContent = "¿No tenés cuenta?";
+      linkElement.textContent = "Regístrate";
 
-  } else if (formType === "loginForm") {
-    
-    titleElement.textContent = "Regístrate";
-    subtitleElement.textContent = "¿Ya tenés cuenta?";
-    linkElement.textContent = "Ingresá";
+      registerForm.classList.add("hidden");
+      loginForm.classList.remove("hidden");
 
-    registerForm.classList.remove("hidden");
-    loginForm.classList.add("hidden");
-    localStorage.setItem("formType",'registerForm');
-  }
-  
-  
-  formType =  localStorage.getItem('formType');
-  console.log(formType);
-  
-   
-});
+      localStorage.setItem("formType", "loginForm");
+    } else if (formType === "loginForm") {
+      titleElement.textContent = "Regístrate";
+      subtitleElement.textContent = "¿Ya tenés cuenta?";
+      linkElement.textContent = "Ingresá";
+
+      registerForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+      localStorage.setItem("formType", "registerForm");
+    }
+
+    formType = localStorage.getItem("formType");
+    console.log(formType);
+  });
 });
