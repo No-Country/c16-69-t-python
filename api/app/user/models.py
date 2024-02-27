@@ -22,3 +22,13 @@ class User(db.Model):
 
     # Relations
     # ...
+
+class Notification(db.Model):
+    __tablename__ = "Notification"
+
+    id = db.Column(db.String(64), primary_key=True, default=generate_id)
+    created_at = db.Column(db.TIMESTAMP, server_default=func.now())
+    message = db.Column(db.String, nullable=False)
+
+    # Relations of FOREIGN KEY
+    user_id = db.Column(db.String, db.ForeignKey('User.id'))
