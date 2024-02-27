@@ -1,15 +1,20 @@
-from flask import Blueprint, jsonify, request
 from datetime import datetime
+
+from flask import Blueprint, jsonify, request
+from marshmallow.exceptions import ValidationError
+from werkzeug.exceptions import BadRequest
+from flask_jwt_extended import current_user, jwt_required
+
 from app import db
 from app.pet.models import Pet, PetPhotos
 from app.pet.schemas import pet_schema, pets_schema, pet_photo_schema
-from marshmallow.exceptions import ValidationError
-from werkzeug.exceptions import BadRequest
-
-bp = Blueprint('pets', __name__)
 
 
-@bp.route('/', methods=['POST'])
+bp = Blueprint("pets", __name__)
+
+
+@bp.route("/", methods=["POST"])
+@jwt_required()
 def register_pet():
     """
     Endpoint POST http://127.0.0.1:5000/api/pets/ to create a new pet.
@@ -23,7 +28,7 @@ def register_pet():
     - type          (str)   Value is Wanted or Found.
     - date_lost     (time)  Value is datetime in UTF format.
     - location      (str)   Value of the location of pet.
-    
+
     Return:
     - pet_data      (dict)  Created pet data.
     """
@@ -32,10 +37,11 @@ def register_pet():
     data = request.json
     try:
         validated_data = pet_schema_ref.load(data)
+        validated_data.created_by_id = current_user.id
 
         db.session.add(validated_data)
         db.session.commit()
-        
+
         # Return the pet object created as part of the response.
         pet_data = pet_schema.dump(validated_data)
         return jsonify(pet_data), 200
@@ -43,7 +49,8 @@ def register_pet():
         # Manage the errors of validation and return a message according specific error.
         return jsonify(err.messages), 400
 
-@bp.route('/', methods=['GET'])
+
+@bp.route("/", methods=["GET"])
 def get_pets():
     """
     Endpoint GET to list the pets with pagination.
@@ -60,8 +67,8 @@ def get_pets():
     """
     try:
         # Pagination parameters.
-        page = int(request.args.get('page', 1))
-        per_page = int(request.args.get('per_page', 5))
+        page = int(request.args.get("page", 1))
+        per_page = int(request.args.get("per_page", 5))
 
         # Query to get paged pets.
         pets = Pet.query.paginate(page=page, per_page=per_page)
@@ -74,7 +81,7 @@ def get_pets():
             "pets": pets_data,
             "total_pages": pets.pages,
             "total_pets": pets.total,
-            "current_page": page
+            "current_page": page,
         }
 
         return jsonify(response), 200
@@ -82,11 +89,12 @@ def get_pets():
         # Handle the error and return an appropriate error message.
         return jsonify({"message": "Error al listar mascotas.", "error": str(e)}), 500
 
-@bp.route('/<string:pet_id>', methods=['GET'])
+
+@bp.route("/<string:pet_id>", methods=["GET"])
 def get_pet_by_id(pet_id):
     """
     Endpoint GET http://127.0.0.1:5000/api/pets/<string:pet_id> to get a pet by ID.
-    
+
     Required:
     - pet_id       (str)   Unique pet id.
 
@@ -111,11 +119,13 @@ def get_pet_by_id(pet_id):
         # Handle schema validation errors.
         return jsonify(err.messages), 400
 
-@bp.route('/<string:pet_id>', methods=['DELETE'])
+
+@bp.route("/<string:pet_id>", methods=["DELETE"])
+@jwt_required()
 def delete_pet_by_id(pet_id):
     """
     Endpoint DELETE http://127.0.0.1:5000/api/pets/<string:pet_id> to delete a pet by ID.
-    
+
     Required:
     - pet_id       (str)   Unique pet id.
 
@@ -130,20 +140,30 @@ def delete_pet_by_id(pet_id):
         if not pet:
             return jsonify(message="Mascota no encontrada."), 404
 
+        if current_user.id != pet.created_by_id:
+            return jsonify(message="No tienes permiso para acceder a esta mascota."), 403 # Forbidden
+
         # Delete the pet from the database.
         db.session.delete(pet)
         db.session.commit()
 
-        return jsonify(message=f"Mascota '{pet.name}' con ID '{pet.id}' fue eliminada correctamente."), 200
+        return (
+            jsonify(
+                message=f"Mascota '{pet.name}' con ID '{pet.id}' fue eliminada correctamente."
+            ),
+            200,
+        )
     except Exception as e:
         # Handle any other errors that may occur.
         return jsonify(message="Ocurrió un error al intentar eliminar la mascota."), 500
 
-@bp.route('/<string:pet_id>', methods=['PUT'])
+
+@bp.route("/<string:pet_id>", methods=["PUT"])
+@jwt_required()
 def update_pet_by_id(pet_id):
     """
     Endpoint PUT http://127.0.0.1:5000/api/pets/<string:pet_id> to update the data of a pet by ID.
-    
+
     Required:
     - pet_id       (str)   Unique pet id.
 
@@ -157,6 +177,9 @@ def update_pet_by_id(pet_id):
         # If the pet is not found, return a 404 error.
         if not pet:
             return jsonify(message="Mascota no encontrada."), 404
+
+        if current_user.id != pet.created_by_id:
+            return jsonify(message="No tienes permiso para acceder a esta mascota."), 403 # Forbidden
 
         # Update the pet's information with the information provided in the application.
         data = request.json
@@ -175,13 +198,18 @@ def update_pet_by_id(pet_id):
         return jsonify({"message": "Error de validación", "errors": err.messages}), 400
     except Exception as e:
         # Handle any other errors that may occur.
-        return jsonify(message="Ocurrió un error al intentar actualizar la mascota."), 500
+        return (
+            jsonify(message="Ocurrió un error al intentar actualizar la mascota."),
+            500,
+        )
 
-@bp.route('/<string:pet_id>/photo', methods=['POST'])
+
+@bp.route("/<string:pet_id>/photo", methods=["POST"])
+@jwt_required()
 def upload_pet_image_by_id(pet_id):
     """
     Endpoint POST http://127.0.0.1:5000/api/pets/<string:pet_id>/photo to upload photo for a pet by ID.
-    
+
     Required:
     - pet_id       (str)   Unique pet id.
     - photo_url    (str)   Url image of the pet.
@@ -189,13 +217,16 @@ def upload_pet_image_by_id(pet_id):
     Return:
     - pet_data     (dict)  Pet data.
     """
-    try:  
+    try:
         photo_url = request.json.get("photo_url")
-        
+
         # Check if the pet exists
         pet = Pet.query.filter_by(id=pet_id).first()
         if not pet:
             return jsonify(message="Mascota no encontrada."), 404
+
+        if current_user.id != pet.created_by_id:
+            return jsonify(message="No tienes permiso para acceder a esta mascota."), 403 # Forbidden
 
         # Create a PetPhotos instance with the image URL and pet ID
         pet_photo = PetPhotos(pet_id=pet_id, photo_url=photo_url)
@@ -209,4 +240,9 @@ def upload_pet_image_by_id(pet_id):
         return jsonify(pet_data), 200
     except Exception as e:
         # Handle any other errors that may occur
-        return jsonify(message="Ocurrió un error al intentar cargar la imagen.", error=str(e)), 500
+        return (
+            jsonify(
+                message="Ocurrió un error al intentar cargar la imagen.", error=str(e)
+            ),
+            500,
+        )
