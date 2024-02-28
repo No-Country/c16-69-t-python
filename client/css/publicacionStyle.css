@@ -34,8 +34,9 @@
 
 
 .picturePet {
-    background-image: url(../img/logo.png);
-}*/
+    background-color: #FF9800;
+    opacity: .7;
+}
 
 .botonPet {
     font-family: 'Poppins', sans-serif;

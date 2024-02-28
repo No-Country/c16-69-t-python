@@ -1,7 +1,7 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
-// Tomo los datos que ingresa el usuario
+// Tomo los datos que ingresa el usuario sobre el aviso a publicar
 
 document
     .getElementById("formulario")
@@ -9,10 +9,12 @@ document
       console.log("aqui..." + event)
       event.preventDefault(); // Evita el envío del formulario
 
-      // Registra al usuario
+      // Registra al aviso
       registrarPet();
+      //guardarRedes();
+      //resetea el form
+      resetearForm();
     });
-
 
 function registrarPet () {
     const image_url = document.getElementById('picturePet').value;
@@ -23,16 +25,11 @@ function registrarPet () {
     const breed = document.getElementById('breed').value;
     const age = document.getElementById('age').value;
     const size = document.getElementById('size').value;
-    const facebook = document.getElementById('facebook').value;
-    const instagram = document.getElementById('instagram').value;
     const description = document.getElementById('description').value;
     const hashtags = document.getElementById('hashtags').value
 
-    //if (document.document.getElementById("picturePet"!=='.jpg'||'.png'||'jpeg' ) ){
-    //    alert('Error al completar')
-    //}
 
-    // Armo un objeto con los datos a registrar
+    // Armo un objeto con los datos  del aviso a registrar
 
     const datosPet = {
         image_url,
@@ -43,8 +40,6 @@ function registrarPet () {
         breed,
         age,
         size,
-        //facebook,
-        //instagram,
         description,
         //hashtags
     };
@@ -66,16 +61,49 @@ fetch("http://127.0.0.1:5000/api/pets/", {
     })
     .then((data) => {
       console.log("Respuesta del backend:", data);
-      window.location.href = "../index.html"; // Redirige a index.html
+      window.location.href = "../index.html"; // Redirige al home
+      
     })
     .catch((error) => {
       console.error("Error al enviar los datos:", error);
     });
 }
 
+/*function guardarRedes (){
+  const facebook = document.getElementById('facebook').value;
+  const instagram = document.getElementById('instagram').value;
 
+  // Creo el objeto que va a pasar los datos de las redes a registrar
 
+  const datosRedes = {
+    facebook,
+    instagram,
+  };
+  fetch("http://127.0.0.1:5000/api/pets/<id>/social_media/", {  //direccion de api de redes
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(datosRedes),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la solicitud Fetch");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Respuesta del backend:", data);
+      window.location.href = "../index.html"; // Redirige a index.html
+    })
+    .catch((error) => {
+      console.error("Error al enviar los datos:", error);
+    });
+}*/
 
+function resetearForm(){
+  document.getElementById("formulario").reset();
+}
 
 //vuelve al home si se cancela la operacion
 function cancelarRegistro() {
