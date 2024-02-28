@@ -34,3 +34,14 @@ class PetPhotos(db.Model):
 
     # Relations of FOREIGN KEY
     pet_id = db.Column(db.String, db.ForeignKey('Pet.id'))
+
+
+class SocialProfile(db.Model):
+    __tablename__ = "SocialProfile"
+
+    id = db.Column(db.String(64), primary_key=True, default=generate_id)
+    social_media = db.Column(db.Enum('Facebook', 'Twitter', 'Instagram', 'LinkedIn', name='SocialMedia'))
+    profile_url = db.Column(db.String)
+
+    # Relations of FOREIGN KEY
+    pet_id = db.Column(db.String, db.ForeignKey('Pet.id'))
