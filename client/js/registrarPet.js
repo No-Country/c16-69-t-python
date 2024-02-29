@@ -63,6 +63,40 @@ formulario.addEventListener('submit', function(event) {
       if (!response.ok) {
         throw new Error("Error en la solicitud Fetch: " + response);
       }
+
+      return response.json();
+    })
+    .then(data => {
+      const pet_id = data.id;
+      console.log("Respuesta del backend:", data);
+      window.location.href = "../index.html"; // Redirige a index.html
+    })
+    .catch(error => {
+      console.error("Error al enviar los datos:", error);
+    });
+
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+  const datosRedes = {
+    pet_id: data.id,
+    social_media: "Facebook",
+    profile_url: facebook
+  }
+
+  fetch("http://127.0.0.1:5000/api/networks/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datosRedes),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Error en la solicitud Fetch: " + response);
+      }
       return response.json();
     })
     .then(data => {
@@ -77,4 +111,8 @@ formulario.addEventListener('submit', function(event) {
   .catch(error => {
     console.error('Error:', error);
   });
-});
+
+
+function cancelarRegistro (){
+  window.location.href = "../index.html";
+}
