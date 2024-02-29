@@ -27,15 +27,14 @@
 .card {
     background-image: url(../img/fondomapa.png);
     background-repeat: no-repeat;
-    background-position:inherit;
     
     
 }
 
 
 .picturePet {
-    background-color: #FF9800;
-    opacity: .7;
+    background-position: center;
+    background-size: cover;
 }
 
 .botonPet {
