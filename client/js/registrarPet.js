@@ -3,7 +3,7 @@ const inputs = document.querySelectorAll('#formulario input');
 
 // Capturo el archivo que ingresa el usuario y lo muestro por pantalla
 
-const picturePet = document.getElementById('picturePet');
+/*const picturePet = document.getElementById('picturePet');
 var uploaded_image = "";
 picturePet.addEventListener('change', function () {
   const reader = new FileReader();
@@ -12,7 +12,7 @@ picturePet.addEventListener('change', function () {
     document.getElementById("display_image").style.backgroundImage = `url($(uploaded_image))`;
   })
   reader.readAsDataURL(this.files[0]);
-});
+});*/
 
 // Tomo los datos que ingresa el usuario sobre el aviso a publicar
 
@@ -24,7 +24,7 @@ document
 
     // Registra al aviso
     registrarPet();
-    //guardarRedes(); queda pendiente hasta tener el endpoint de redes sociales
+    guardarRedes(); //queda pendiente hasta tener el endpoint de redes sociales
 
     //resetea el form
     resetearForm();
@@ -49,7 +49,7 @@ function registrarPet() {
   // Armo un objeto con los datos  del aviso a registrar
 
   const datosPet = {
-    image_url,
+    //image_url,
     type,
     date_lost,
     location,
@@ -86,7 +86,7 @@ function registrarPet() {
     });
 }
 
-/*function guardarRedes (){
+function guardarRedes (){
   const facebook = document.getElementById('facebook').value;
   const instagram = document.getElementById('instagram').value;
 
@@ -116,7 +116,7 @@ function registrarPet() {
     .catch((error) => {
       console.error("Error al enviar los datos:", error);
     });
-}*/
+}
 
 function resetearForm() {
   document.getElementById("formulario").reset();
