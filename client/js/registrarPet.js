@@ -1,4 +1,11 @@
 const formulario = document.getElementById('formulario');
+// Obtener el token de sesión almacenado en sessionStorage
+const token = sessionStorage.getItem('token');
+
+// Variables para almacenar datos relevantes
+let imageUrl;
+let datosPet;
+let pet_id_ref;
 
 // Agrega un event listener para el envío del formulario
 formulario.addEventListener('submit', function(event) {
@@ -24,94 +31,102 @@ formulario.addEventListener('submit', function(event) {
   // API Request para subir la imagen a ImgBB
   const apiKey = 'b8630093227cc0bf57935c135bbf6f9c'; // Reemplaza 'TU_API_KEY' con tu clave API de ImgBB
 
-  fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
-    method: 'POST',
-    body: formData,
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Guarda la URL de la imagen subida en una variable
-    const imageUrl = data.data.url;
-    console.log('URL de la imagen subida:', imageUrl);
-
-    // Arma un objeto con los datos del formulario incluyendo la URL de la imagen subida
-    const datosPet = {
-      image_url: imageUrl,
-      type,
-      date_lost,
-      location,
-      name,
-      breed,
-      age,
-      size,
-      //facebook,
-      //instagram,
-      description,
-      //hashtags
-    };
-
-    // Solicitud POST al backend
-    fetch("http://127.0.0.1:5000/api/pets/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(datosPet),
+  // Verificar si el token está presente
+  if (!token) {
+    console.error("Token de sesión no encontrado en sessionStorage");
+  } else {
+    // API request to upload image in imgbb
+    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+      method: 'POST',
+      body: formData,
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Error en la solicitud Fetch: " + response);
-      }
-
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-      const pet_id = data.id;
-      console.log("Respuesta del backend:", data);
-      window.location.href = "../index.html"; // Redirige a index.html
+      // Guarda la URL de la imagen subida en una variable
+      imageUrl = data.data.url;
+      console.log('URL for IMGBB de la imagen subida:', imageUrl);
+
+      // Arma un objeto con los datos del formulario incluyendo la URL de la imagen subida
+      datosPet = {
+        image_url: imageUrl,
+        type,
+        date_lost,
+        location,
+        name,
+        breed,
+        age,
+        size,
+        description,
+        //hashtags
+      };
+
+      // Solicitud POST al backend para crear PET
+      fetch("http://127.0.0.1:5000/api/pets/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` // Agrega el token de sesión como token de autorización Bearer
+        },
+        body: JSON.stringify(datosPet),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error en la solicitud Fetch: " + response);
+        }
+        return response.json();
+      })
+      .then(data => {
+        pet_id_ref = data.id;
+        console.log("Respuesta del backend API crear Pet:", data);
+
+        const datosRedes = {
+          pet_id: pet_id_ref,
+          social_media: "Facebook",
+          profile_url: facebook
+        }
+        
+        // Solicitud POST al backend para crear redsocial
+        fetch("http://127.0.0.1:5000/api/networks/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}` // Agrega el token de sesión como token de autorización Bearer
+          },
+          body: JSON.stringify(datosRedes),
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Error en la solicitud Fetch: " + response);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Respuesta del backend API crear red social:", data);
+        })
+        .catch(error => {
+          console.error("Error al enviar los datos:", error);
+        });
+
+
+      })
+      .catch(error => {
+        console.error("Error al enviar los datos:", error);
+      }); // fin request fetch pet
+
+
     })
     .catch(error => {
-      console.error("Error al enviar los datos:", error);
-    });
+      console.error('Error:', error);
+    }); // fin request fetch imgbb
 
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+  } // fin if
+  
 
-  const datosRedes = {
-    pet_id: data.id,
-    social_media: "Facebook",
-    profile_url: facebook
-  }
+}); //fin del formulario
 
-  fetch("http://127.0.0.1:5000/api/networks/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(datosRedes),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Error en la solicitud Fetch: " + response);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log("Respuesta del backend:", data);
-      window.location.href = "../index.html"; // Redirige a index.html
-    })
-    .catch(error => {
-      console.error("Error al enviar los datos:", error);
-    });
 
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
+// Redirige a index.html
+window.location.href = "../index.html"; 
 
 function cancelarRegistro (){
   window.location.href = "../index.html";
