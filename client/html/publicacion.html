@@ -26,10 +26,10 @@
                     <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-6 align-items-center justify-content-center h-100">
-                                <img src="" class="picturePet img-fluid w-100 mb-2" id="picturePet" loading="lazy"
-                                    alt="">
+                                <div class="picturePet img-fluid w-100 mb-2" id="display_image" loading="lazy"
+                                    alt=""></div>
                                 <div class="input-group text-secondary w-100 justify-content-center">
-                                    <input type="file" class="form-control text-secondary" required name="picturePet" id="picturePet"
+                                    <input type="file" accept="image/png, image/jpg" class="form-control text-secondary" required name="picturePet" id="picturePet"
                                         aria-describedby="file" value="imagen_de_mascota" aria-label="Upload">
                                     <label class="input-group-text text-secondary" for="picturePet"></label>
                                 </div>
@@ -66,26 +66,26 @@
                                     </div>
                                     <div class="row g-3 mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control" required name="age" placeholder="Edad de Mascota" id="age"
+                                            <input type="text" class="form-control" required name="age" placeholder="Edad de Mascota en numeros" id="age"
                                                 aria-label="Edad_de_Mascota">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" required name="size" placeholder="Tamaño" id="size"
+                                            <input type="text" class="form-control" required name="size" placeholder="Tamaño, por ejemplo: Grande" id="size"
                                                 aria-label="size">
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Redes Sociales</span>
-                                        <input type="text" aria-label="Facebook" class="form-control" id="facebook" name="facebook">
-                                        <input type="text" aria-label="Instagram" class="form-control"id="instagram" name="instagram">
+                                        <input type="url" aria-label="Facebook" class="form-control" id="facebook" name="facebook" placeholder="Facebook link"><a href="https://wwww.facebook.com/login" target="_blank"></a>
+                                        <input type="url" aria-label="Instagram" class="form-control"id="instagram" name="instagram" placeholder="Instagram link"><a href="https://www.instagram.com/login" target="_blank"></a>
                                     </div>
                                     <div class="mb-3">
                                         <textarea class="form-control" id="description" rows="4"
-                                            placeholder="Descripcion" aria-label="descripcion" name="description"></textarea>
+                                            placeholder="Contanos un poco mas..." aria-label="descripcion" name="description"></textarea>
                                     </div>
                                     <div class="input-group mb-5">
                                         <span class="input-group-text">#</span>
-                                        <input type="text" class="form-control" id="hashtags" placeholder="Etiquetas" name="hashtags" id="hashtags"
+                                        <input type="text" class="form-control" id="hashtags" placeholder="Etiquetas como #jugueton #tranquilo..." name="hashtags" id="hashtags"
                                             aria-label="Etiquetas" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="botonPet text-center col g-2 mb-3">

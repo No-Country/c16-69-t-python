@@ -27,15 +27,15 @@
 .card {
     background-image: url(../img/fondomapa.png);
     background-repeat: no-repeat;
-    background-position:inherit;
     
     
 }
 
 
 .picturePet {
-    background-image: url(../img/logo.png);
-}*/
+    background-position: center;
+    background-size: cover;
+}
 
 .botonPet {
     font-family: 'Poppins', sans-serif;
