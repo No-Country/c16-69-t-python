@@ -129,5 +129,5 @@ formulario.addEventListener('submit', function(event) {
 //window.location.href = "../index.html";
 
 function cancelarRegistro (){
-  window.location.href = "../index.html";
+  window.location.href = "../html/logued.html";
 }
