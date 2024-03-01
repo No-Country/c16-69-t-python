@@ -56,7 +56,7 @@ def get_pets():
     Endpoint GET to list the pets with pagination.
     Examples:
     - http://127.0.0.1:5000/api/pets
-    - http://127.0.0.1:5000/api/pets?page=1&per_page=4
+    - http://127.0.0.1:5000/api/pets?page=1&per_page=10
 
     Query Parameters:
     - page      (int)   Page number (default 1).
@@ -68,7 +68,7 @@ def get_pets():
     try:
         # Pagination parameters.
         page = int(request.args.get("page", 1))
-        per_page = int(request.args.get("per_page", 5))
+        per_page = int(request.args.get("per_page", 10))
 
         # Query to get paged pets.
         pets = Pet.query.paginate(page=page, per_page=per_page)

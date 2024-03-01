@@ -108,81 +108,7 @@
         <div class="container">
           <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="img/01-mascota.jpg" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Zenon</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Centro</p>
-                    <p>12/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <a href="#" class="btn btn-link">Ver más</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="img/02-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Rómulo</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Centro</p>
-                    <p>12/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <a href="#" class="btn btn-link">Ver más</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="img/03-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Copito</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Barrio Santa Ana</p>
-                    <p>17/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <a href="#" class="btn btn-link">Ver más</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="img/04-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Negrito</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Barrio Parque</p>
-                    <p>22/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <a href="#" class="btn btn-link">Ver más</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="img/05-mascota.jpg" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Pelusa</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Colinas Verdes</p>
-                    <p>10/01/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <a href="#" class="btn btn-link">Ver más</a>
-                  </div>
-                </div>
-              </div>
+              <!-- Las diapositivas se agregarán dinámicamente aquí -->
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -413,6 +339,62 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-   
+  
+  <!-- Script para obtener y mostrar los datos de la API de mascotas -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('http://127.0.0.1:5000/api/pets/')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          const mascotas = data.pets; // Tomar todas las mascotas recuperadas
+
+          const swiperWrapper = document.querySelector('.swiper-wrapper');
+          mascotas.forEach(mascota => {
+            const swiperSlide = document.createElement('div');
+            swiperSlide.classList.add('swiper-slide');
+
+            const img = document.createElement('img');
+            img.src = mascota.image_url;
+            img.alt = mascota.name;
+
+            const cardDescription = document.createElement('div');
+            cardDescription.classList.add('card-description');
+
+            const cardTitle = document.createElement('div');
+            cardTitle.classList.add('card-title');
+            cardTitle.innerHTML = `<h5>${mascota.name}</h5>`;
+
+            const cardText = document.createElement('div');
+            cardText.classList.add('card-text');
+            cardText.innerHTML = `<p>${mascota.location}</p><p>${mascota.date_lost}</p>`;
+
+            const cardLink = document.createElement('div');
+            cardLink.classList.add('card-link');
+            cardLink.innerHTML = `<a href="#" class="btn btn-link">Ver más</a>`;
+
+            cardDescription.appendChild(cardTitle);
+            cardDescription.appendChild(cardText);
+            cardDescription.appendChild(cardLink);
+
+            swiperSlide.appendChild(img);
+            swiperSlide.appendChild(cardDescription);
+
+            swiperWrapper.appendChild(swiperSlide);
+          });
+
+          const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          });
+        })
+        .catch(error => {
+          console.error('Error al obtener los datos de la API de mascotas:', error);
+        });
+    });
+  </script>
   </body>
 </html>
