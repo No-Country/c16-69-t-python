@@ -1,9 +1,7 @@
 # Archivo solo de ejemplo para un schema del modelo user
-import copy
-import re
-from marshmallow import fields, validate, ValidationError
+from marshmallow import fields, validate
 from app import ma
-from app.pet.models import Pet, PetPhotos
+from app.pet.models import Pet, PetPhotos, SocialProfile
 
 
 # User Schemas
@@ -48,3 +46,19 @@ class PetPhotosSchema(ma.SQLAlchemyAutoSchema):
 
 pet_photo_schema = PetPhotosSchema()
 pets_photos_schema = PetPhotosSchema(many=True)
+
+
+class SocialProfileSchema(ma.SQLAlchemyAutoSchema):
+
+    id = fields.String(dump_only=True) # Este campo se usa solo para volcar datos
+    pet_id = fields.String()
+    social_media = fields.String(validate=validate.OneOf(['Facebook', 'Twitter', 'Instagram', 'LinkedIn']), default='Facebook')
+    profile_url = fields.String()
+
+    class Meta:
+        model = SocialProfile
+        fields = ['id', 'pet_id', 'social_media', 'profile_url']
+        load_instance = True
+
+social_network_schema = SocialProfileSchema()
+social_networks_schema = SocialProfileSchema(many=True)

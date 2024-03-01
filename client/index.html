@@ -280,6 +280,68 @@
 
     <!-- Fin Main -->
 
+    <!--AGREGO DISEñO MODAL-->
+
+     <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Tu Busqueda</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--Modal body-->
+        <div class="modal-body container">
+          <div class="col d-flex flex-wrap">
+            <img class="col img-fluid mb-2" src="./img/logo.png" alt="" loading="lazy">
+            <!--Uso imagen de muestra, deberia ir la que trae del back-->
+            <div class="row">
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="name" aria-label="First name" readonly>
+              </div>
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="breed" aria-label="breed" readonly>
+              </div>
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="location" aria-label="location" readonly>
+              </div>
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="age" aria-label="age" readonly>
+              </div>
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="size" aria-label="size" readonly>
+              </div>
+              <div class="col-auto">
+                <input type="text" class="form-control" placeholder="type" aria-label="type" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end me-5">
+            <div class="col-1">
+              <a name="" id="" class="" href="#" role="button"><img src="./img/facebook.svg" alt=""></a>
+              <!--Boton a redes sociales (Facebook)-->
+            </div>
+            <div class="col-1">
+              <a name="" id="" class="" href="#" role="button"><img src="./img/instagram.svg" alt=""></a>
+              <!--Boton a redes sociales (Instagram)-->
+            </div>
+            <div class="col-1">
+              <a name="" id="" class="" href="#" role="button"><img src="./img/mail_FILL0_wght400_GRAD0_opsz24.svg" alt=""></a> <!--Boton a correo electronico-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
     <!-- Footer: LUZ -->
     <footer
       class="footer d-flex flex-row flex-wrap align-items-center p-3 text-secondary"

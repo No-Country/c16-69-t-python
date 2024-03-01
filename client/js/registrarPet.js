@@ -1,41 +1,54 @@
 const formulario = document.getElementById('formulario');
-const inputs = document.querySelectorAll('#formulario input');
+// Obtener el token de sesión almacenado en sessionStorage
+const token = sessionStorage.getItem('token');
 
-// Tomo los datos que ingresa el usuario
+// Variables para almacenar datos relevantes
+let imageUrl;
+let datosPet;
+let pet_id_ref;
 
-document
-    .getElementById("formulario")
-    .addEventListener("submit", function (event) {
-      console.log("aqui..." + event)
-      event.preventDefault(); // Evita el envío del formulario
+// Agrega un event listener para el envío del formulario
+formulario.addEventListener('submit', function(event) {
+  event.preventDefault(); // Evita el envío del formulario
 
-      // Registra al usuario
-      registrarPet();
-    });
+  // Toma los datos del formulario
+  const type = document.getElementById('type').value;
+  const date_lost = document.getElementById('date_lost').value;
+  const location = document.getElementById('location').value;
+  const name = document.getElementById('namePet').value;
+  const breed = document.getElementById('breed').value;
+  const age = document.getElementById('age').value;
+  const size = document.getElementById('size').value;
+  const facebook = document.getElementById('facebook').value;
+  const instagram = document.getElementById('instagram').value;
+  const description = document.getElementById('description').value;
+  const hashtags = document.getElementById('hashtags').value;
 
+  // Crea un objeto FormData para enviar los datos del formulario
+  const formData = new FormData();
+  formData.append('image', formulario.picturePet.files[0]); // Obtén el archivo de la imagen
+  
+  // API Request para subir la imagen a ImgBB
+  const apiKey = 'b8630093227cc0bf57935c135bbf6f9c'; // Reemplaza 'TU_API_KEY' con tu clave API de ImgBB
 
-function registrarPet () {
-    const image_url = document.getElementById('picturePet').value;
-    const type = document.getElementById('type').value;
-    const date_lost = document.getElementById('date_lost').value;
-    const location = document.getElementById('location').value;
-    const name = document.getElementById('namePet').value;
-    const breed = document.getElementById('breed').value;
-    const age = document.getElementById('age').value;
-    const size = document.getElementById('size').value;
-    const facebook = document.getElementById('facebook').value;
-    const instagram = document.getElementById('instagram').value;
-    const description = document.getElementById('description').value;
-    const hashtags = document.getElementById('hashtags').value
+  // Verificar si el token está presente
+  if (!token) {
+    console.error("Token de sesión no encontrado en sessionStorage");
+  } else {
+    // API request to upload image in imgbb
+    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Guarda la URL de la imagen subida en una variable
+      imageUrl = data.data.url;
+      console.log('URL for IMGBB de la imagen subida:', imageUrl);
 
-    //if (document.document.getElementById("picturePet"!=='.jpg'||'.png'||'jpeg' ) ){
-    //    alert('Error al completar')
-    //}
-
-    // Armo un objeto con los datos a registrar
-
-    const datosPet = {
-        image_url,
+      // Arma un objeto con los datos del formulario incluyendo la URL de la imagen subida
+      datosPet = {
+        image_url: imageUrl,
         type,
         date_lost,
         location,
@@ -43,41 +56,78 @@ function registrarPet () {
         breed,
         age,
         size,
-        //facebook,
-        //instagram,
         description,
         //hashtags
-    };
+      };
 
-// Solicitud de POST
+      // Solicitud POST al backend para crear PET
+      fetch("http://127.0.0.1:5000/api/pets/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` // Agrega el token de sesión como token de autorización Bearer
+        },
+        body: JSON.stringify(datosPet),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error en la solicitud Fetch: " + response);
+        }
+        return response.json();
+      })
+      .then(data => {
+        pet_id_ref = data.id;
+        console.log("Respuesta del backend API crear Pet:", data);
 
-fetch("http://127.0.0.1:5000/api/pets/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(datosPet),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Error en la solicitud Fetch");
-      }
-      return response.json();
+        const datosRedes = {
+          pet_id: pet_id_ref,
+          social_media: "Facebook",
+          profile_url: facebook
+        }
+        
+        // Solicitud POST al backend para crear redsocial
+        fetch("http://127.0.0.1:5000/api/networks/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}` // Agrega el token de sesión como token de autorización Bearer
+          },
+          body: JSON.stringify(datosRedes),
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Error en la solicitud Fetch: " + response);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Respuesta del backend API crear red social:", data);
+        })
+        .catch(error => {
+          console.error("Error al enviar los datos:", error);
+        });
+
+
+      })
+      .catch(error => {
+        console.error("Error al enviar los datos:", error);
+      }); // fin request fetch pet
+
+
     })
-    .then((data) => {
-      console.log("Respuesta del backend:", data);
-      window.location.href = "../index.html"; // Redirige a index.html
-    })
-    .catch((error) => {
-      console.error("Error al enviar los datos:", error);
-    });
+    .catch(error => {
+      console.error('Error:', error);
+    }); // fin request fetch imgbb
+
+  } // fin if
+  
+
+}); //fin del formulario
+
+
+// Redirige a index.html
+//window.location.href = "../index.html";
+
+function cancelarRegistro (){
+  window.location.href = "../index.html";
 }
-
-
-
-
-
-//vuelve al home si se cancela la operacion
-function cancelarRegistro() {
-    window.location.href = '../index.html';
-};
