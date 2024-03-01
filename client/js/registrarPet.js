@@ -126,7 +126,7 @@ formulario.addEventListener('submit', function(event) {
 
 
 // Redirige a index.html
-window.location.href = "../index.html"; 
+//window.location.href = "../index.html";
 
 function cancelarRegistro (){
   window.location.href = "../index.html";
