@@ -44,12 +44,14 @@
 .navbar {
   padding: 0 10vw;
   width: 100%;
+  list-style-type: none;
 }
 
 .navbar-nav .nav-item.active {
   border-bottom: 3px solid #ff5722;
   font-weight: bolder;
 }
+
 
 .btn {
   font-family: "Poppins", sans-serif;
@@ -190,6 +192,8 @@
 .main-post {
   height: 100vh;
 }
+
+
 .main-post h2,
 .main-post p {
   text-align: center;
@@ -241,6 +245,8 @@
   height: 100%;
   overflow: hidden;
 }
+
+
 .container .swiper-slide {
   position: relative;
   text-align: center;
@@ -280,7 +286,7 @@
 
 }
 
-.container .swiper-slide .card-link a {
+.container .swiper-slide .card-link button {
   text-decoration: none;
   font-size: 13px;
  
@@ -354,4 +360,21 @@
 .footer {
   background-color: #ff5722;
   bottom: 0;
+}
+
+/* ---------Modal */
+
+.modal-content{
+  font-family: "Open Sans", sans-serif;
+}
+
+.contacts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.no-border{
+  border: none;
+
 }

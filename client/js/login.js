@@ -27,6 +27,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
       let token = data.access_token;
       console.log(token);
       localStorage.setItem("token", token);
+      localStorage.setItem('username', username);
       window.location.href = "../html/logued.html";
   })
   .catch((error) => {

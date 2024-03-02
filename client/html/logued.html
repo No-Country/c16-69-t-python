@@ -19,10 +19,10 @@
     />
 
     <!-- Enlace a hojas de estilo -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
 
     <!-- Enlace a js -->
-  <script src="js/script-main.js" defer></script>
+    <script src="../js/logued.js" defer></script>
   </head>
   <body>
     <!------------------------------------ Header: navBar SOLE -->
@@ -41,28 +41,46 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item me-5">
-                <a class="nav-link active" aria-current="page" href="#home"
-                  >Inicio</a
+            <ul class="navbar-nav mb-2 mb-lg-0 w-100 d-flex">
+              <div class="d-flex w-75">
+                <li class="nav-item me-5">
+                  <a class="nav-link active" aria-current="page" href="#home"
+                    >Inicio</a
+                  >
+                </li>
+                <li class="nav-item me-5">
+                  <a class="nav-link" href="#post">Buscados</a>
+                </li>
+                <li class="nav-item me-5">
+                  <a class="nav-link" href="#map">Mapa</a>
+                </li>
+                <li class="nav-item me-5">
+                  <a class="nav-link" href="#us">Nosotros</a>
+                </li>
+              </div>
+
+              <li class="nav-item dropdown align-items-end">
+                <a
+                  id="usuarioDropdown"
+                  class="nav-link dropdown-toggle "
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-              </li>
-              <li class="nav-item me-5">
-                <a class="nav-link" href="#post">Buscados</a>
-              </li>
-              <li class="nav-item me-5">
-                <a class="nav-link" href="#map">Mapa</a>
-              </li>
-              <li class="nav-item me-5">
-                <a class="nav-link" href="#us">Nosotros</a>
+                  <!-- Se agrega nombre de usuario desde js -->
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Configurar</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#" onclick="cerrarSesion()"
+                      >Cerrar Sesión</a
+                    >
+                  </li>
+                </ul>
               </li>
             </ul>
-            <!-- <form class="d-flex" role="search"> -->
-
-            <button id="btn-registro" class="btn" onclick="redirecToForm('registerForm')">Registrate</button>
-            <!-- </form> -->
-            
-
           </div>
         </div>
       </nav>
@@ -82,13 +100,14 @@
           </p>
 
           <div class="home-btns">
-            <button class="btn" onclick="redirecToForm('registerForm')">Registrate</button>
-            <button class="btn btn-logIn" onclick="redirecToForm('loginForm')">Ingresar</button>
+            <button class="btn btn-publicar w-50" onclick="abrirPublicacion()">
+              Publicar
+            </button>
           </div>
         </div>
         <div class="home-img-container">
           <img
-            src="img/pet-finder-web-app.jpg"
+            src="../img/pet-finder-web-app.jpg"
             class="img-fluid home-img"
             alt="..."
           />
@@ -105,13 +124,12 @@
             tiene una historia única y está ansioso por regresar a casa.
           </p>
         </div>
-     
         <!-- Carrousel de Swipper -->
         <div class="container">
           <div class="swiper-container mySwiper">
             <div class="swiper-wrapper mt-5">
               <div class="swiper-slide">
-                <img src="img/01-mascota.jpg" alt="" />
+                <img src="../img/01-mascota.jpg" alt="" />
                 <div class="card-description">
                   <div class="card-title">
                     <h5>Zenon</h5>
@@ -120,11 +138,16 @@
                     <p>Centro</p>
                     <p>12/02/2024</p>
                   </div>
-                 
+                  <div class="card-link">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                      </button>
+                    
+                  </div>
                 </div>
               </div>
               <div class="swiper-slide">
-                <img src="img/02-img.avif" alt="" />
+                <img src="../img/02-img.avif" alt="" />
                 <div class="card-description">
                   <div class="card-title">
                     <h5>Rómulo</h5>
@@ -133,11 +156,17 @@
                     <p>Centro</p>
                     <p>12/02/2024</p>
                   </div>
+                  <div class="card-link">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                      </button>
+                    
+                  </div>
                  
                 </div>
               </div>
               <div class="swiper-slide">
-                <img src="img/03-img.avif" alt="" />
+                <img src="../img/03-img.avif" alt="" />
                 <div class="card-description">
                   <div class="card-title">
                     <h5>Copito</h5>
@@ -146,11 +175,16 @@
                     <p>Barrio Santa Ana</p>
                     <p>17/02/2024</p>
                   </div>
-                
+                  <div class="card-link">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                      </button>
+                    
+                  </div>
                 </div>
               </div>
               <div class="swiper-slide">
-                <img src="img/04-img.avif" alt="" />
+                <img src="../img/04-img.avif" alt="" />
                 <div class="card-description">
                   <div class="card-title">
                     <h5>Negrito</h5>
@@ -159,11 +193,16 @@
                     <p>Barrio Parque</p>
                     <p>22/02/2024</p>
                   </div>
-                 
+                  <div class="card-link">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                      </button>
+                    
+                  </div>
                 </div>
               </div>
               <div class="swiper-slide">
-                <img src="img/05-mascota.jpg" alt="" />
+                <img src="../img/05-mascota.jpg" alt="" />
                 <div class="card-description">
                   <div class="card-title">
                     <h5>Pelusa</h5>
@@ -172,7 +211,12 @@
                     <p>Colinas Verdes</p>
                     <p>10/01/2024</p>
                   </div>
-                 
+                  <div class="card-link">
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                      </button>
+                    
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,7 +233,7 @@
           class="container-fluid position-relative bg-secondary-subtle object-fit-cover"
         >
           <img
-            src="./img/mapa.png"
+            src="../img/mapa.png"
             alt="map"
             id="map"
             class="img-fluid ratio ratio-16x9 mx-auto d-block"
@@ -200,7 +244,6 @@
             Explora y encuentra cerca de Ti!
           </h2>
         </div>
-     
 
         <div class="curve">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 600">
@@ -214,8 +257,11 @@
             En nuestra sección de mapas, te invitamos a explorar las ubicaciones
             exactas donde se han reportado mascotas perdidas o encontradas. Este
             mapa interactivo te proporciona una visión geográfica de la búsqueda
-            en curso. <br> <strong>¡Descubre historias conmovedoras y únete a la comunidad en
-              acción!</strong>
+            en curso. <br />
+            <strong
+              >¡Descubre historias conmovedoras y únete a la comunidad en
+              acción!</strong
+            >
           </p>
         </div>
       </section>
@@ -234,7 +280,7 @@
           <h2 class="text-start align-items-md-start">¿Cómo funciona?</h2>
           <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item">
-              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+              <img src="../img/pawprint.png" alt="pawprint" width="40px" /><span
                 class="textosecundario"
               >
                 <b> Regístrate: </b> Crea tu perfil y comparte detalles sobre tu
@@ -242,7 +288,7 @@
               >
             </li>
             <li class="list-group-item">
-              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+              <img src="../img/pawprint.png" alt="pawprint" width="40px" /><span
                 class="textosecundario"
               >
                 <b> Búsqueda Simple:</b> Explora mascotas perdidas cercanas a tu
@@ -250,7 +296,7 @@
               >
             </li>
             <li class="list-group-item">
-              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+              <img src="../img/pawprint.png" alt="pawprint" width="40px" /><span
                 class="textosecundario"
               >
                 <b> Notificaciones Instantáneas: </b> Recibe notificaciones
@@ -258,7 +304,7 @@
               >
             </li>
             <li class="list-group-item">
-              <img src="./img/pawprint.png" alt="pawprint" width="40px" /><span
+              <img src="../img/pawprint.png" alt="pawprint" width="40px" /><span
                 class="textosecundario"
               >
                 <b> Comunidad Solidaria: </b> Conéctate con otros amantes de los
@@ -272,18 +318,13 @@
 
     <!-- Fin Main -->
 
-    <!--AGREGO DISEñO MODAL-->
-
-    
-
-
     <!-- Footer: LUZ -->
     <footer
       class="footer d-flex flex-row flex-wrap align-items-center p-3 text-secondary"
     >
       <div class="col-1 text-end">
         <img
-          src="./icons/c-circle.svg"
+          src="../icons/c-circle.svg"
           class="filter"
           role="img"
           alt="copyright"
@@ -295,15 +336,15 @@
       <div
         class="col-9 align-content-center pt-2 ps-1 justify-content-start text-start"
       >
-        <p class="fs-6 text text-white-50">Todos los Derechos Reservados</p>
+        <p class="fs-6 text text-white">Todos los Derechos Reservados</p>
       </div>
       <div class="col justify-content-around p-2">
         <a
           href="https://www.instagram.com/petfinder-buscador-de-mascotas/"
           target="_blank"
           ><img
-            class="text-white filter"
-            src="./icons/instagram.svg"
+            class="text-white filter me-3"
+            src="../icons/instagram.svg"
             role="img"
             alt="instagram"
             width="32"
@@ -313,8 +354,8 @@
         <!--red social-->
         <a href="https://www.facebook.com/petfinder.net" target="_blank"
           ><img
-            class="text-white filter"
-            src="./icons/facebook.svg"
+            class="text-white filter me-3"
+            src="../icons/facebook.svg"
             role="img"
             alt="facebook"
             width="32"
@@ -326,8 +367,8 @@
           href="https://www.twitter.com/petfinder-buscador-de-mascotas"
           target="_blank"
           ><img
-            class="text-white filter"
-            src="./icons/twitter-x.svg"
+            class="text-white filter me-3"
+            src="../icons/twitter-x.svg"
             role="img"
             alt="twitter"
             width="32"
@@ -338,6 +379,73 @@
       <!--red social-->
     </footer>
     <!-- Fin Footer -->
+     
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title " id="exampleModalLabel">Zenon</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--Modal body-->
+        <div class="modal-body container">
+            <div class="row mt-3">
+                <!-- columna de la imagen -->
+                <div class="col-md-6 mb-3">
+                    <img class="img-fluid" src="../img/01-mascota.jpg" alt="" loading="lazy">
+                    <h6 class="text-center">Buscado</h6>
+
+                    <!-- Uso imagen de muestra, debería ir la que trae del backend -->
+                </div>
+
+                <!-- columna de los campos del formulario -->
+                <div class="col-md-6 ">
+                    
+                       
+                        <div class="col-12">
+                            <input type="text" class="form-control no-border mt-2" placeholder="name" aria-label="First name" readonly>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control no-border" placeholder="breed" aria-label="breed" readonly>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" class="form-control no-border" placeholder="location" aria-label="location" readonly>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" class="form-control no-border" placeholder="age" aria-label="age" readonly>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" class="form-control no-border" placeholder="size" aria-label="size" readonly>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" class="form-control no-border" placeholder="type" aria-label="type" readonly>
+                          </div>
+                   
+                </div>
+                
+            </div>  
+            <div class="contacts my-5">
+              <a href="http://"><img src="../icons/facebook.svg" alt=""></a>
+              <a href="http://"><img src="../icons/instagram.svg" alt=""></a>
+              <a href="http://"><img src="../icons/whatsapp.svg" alt=""></a>
+              <a href="http://"><img src="../icons/email.png" alt=""></a>
+            </div>    
+              
+            
+            
+          </div>   
+
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <!-- Enlace a Bootstrap -->
     <script
@@ -347,7 +455,7 @@
     ></script>
 
     <!-- Swiper JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-   
   </body>
 </html>

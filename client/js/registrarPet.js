@@ -131,3 +131,24 @@ formulario.addEventListener('submit', function(event) {
 function cancelarRegistro (){
   window.location.href = "../html/logued.html";
 }
+
+
+
+
+function displayImage() {
+  var input = document.getElementById("picturePet");
+  var img = document.getElementById("display_image");
+  var file = input.files[0];
+  var reader = new FileReader();
+
+  reader.onloadend = function () {
+      img.src = reader.result;
+  };
+
+  if (file) {
+      reader.readAsDataURL(file);
+     
+  } else {
+      img.src = "../img/logo.png"; // Puedes establecer la imagen predeterminada si no se selecciona ninguna imagen
+  }
+}
