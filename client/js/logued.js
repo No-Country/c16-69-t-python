@@ -1,3 +1,14 @@
+function checkAuthentication() {
+  const token = localStorage.getItem('token');
+  
+  if (!token) {
+      // Redirigir a la página de inicio de sesión
+      window.location.href = '../html/register-login.html#login';
+  }
+}
+
+checkAuthentication();
+
 const nombreUsuario = localStorage.getItem('username');
 
 
@@ -14,6 +25,7 @@ function abrirPublicacion() {
 function cerrarSesion() {
   // Remover el token del localStorage
   localStorage.removeItem("token");
+  localStorage.removeItem("username");
 
   // Redirigir al usuario a la página de inicio de sesión o a donde desees
   window.location.href = "../index.html";
