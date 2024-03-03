@@ -293,6 +293,10 @@
 
 }
 
+.swiper-slide{
+  max-width: 280px; margin: 0 10px;
+}
+
 .btn-link{
   width: fit-content;
   background-color: #ff5722;
@@ -377,4 +381,9 @@
 .no-border{
   border: none;
 
+}
+
+#petType{
+  color: #ff5722;
+  text-align: center;
 }

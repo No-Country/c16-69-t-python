@@ -12,6 +12,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Enlace a swipper -->
     <link
       rel="stylesheet"
@@ -23,6 +24,7 @@
 
     <!-- Enlace a js -->
     <script src="../js/logued.js" defer></script>
+    <script src="../js/slide.js"></script>
   </head>
   <body>
     <!------------------------------------ Header: navBar SOLE -->
@@ -128,97 +130,11 @@
         <div class="container">
           <div class="swiper-container mySwiper">
             <div class="swiper-wrapper mt-5">
-              <div class="swiper-slide">
-                <img src="../img/01-mascota.jpg" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Zenon</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Centro</p>
-                    <p>12/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver más
-                      </button>
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="../img/02-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Rómulo</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Centro</p>
-                    <p>12/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver más
-                      </button>
-                    
-                  </div>
-                 
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="../img/03-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Copito</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Barrio Santa Ana</p>
-                    <p>17/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver más
-                      </button>
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="../img/04-img.avif" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Negrito</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Barrio Parque</p>
-                    <p>22/02/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver más
-                      </button>
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="../img/05-mascota.jpg" alt="" />
-                <div class="card-description">
-                  <div class="card-title">
-                    <h5>Pelusa</h5>
-                  </div>
-                  <div class="card-text">
-                    <p>Colinas Verdes</p>
-                    <p>10/01/2024</p>
-                  </div>
-                  <div class="card-link">
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver más
-                      </button>
-                    
-                  </div>
-                </div>
-              </div>
+              
+              <!-- Acá se cargan las tarjetas dinamicamente -->
+              
+              
+              
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -387,7 +303,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title " id="exampleModalLabel">Zenon</h3>
+          <h3 class="modal-title " id="exampleModalLabel" ></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <!--Modal body-->
@@ -396,42 +312,33 @@
                 <!-- columna de la imagen -->
                 <div class="col-md-6 mb-3">
                     <img class="img-fluid" src="../img/01-mascota.jpg" alt="" loading="lazy">
-                    <h6 class="text-center">Buscado</h6>
+                    <h6 class="text-center"></h6>
 
                     <!-- Uso imagen de muestra, debería ir la que trae del backend -->
                 </div>
 
                 <!-- columna de los campos del formulario -->
                 <div class="col-md-6 ">
-                    
+                          
+                    <p id="petName" class="fw-bold"></p>
+                    <p id="petBreed" class="fw-bold"></p>
                        
-                        <div class="col-12">
-                            <input type="text" class="form-control no-border mt-2" placeholder="name" aria-label="First name" readonly>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control no-border" placeholder="breed" aria-label="breed" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <input type="text" class="form-control no-border" placeholder="location" aria-label="location" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <input type="text" class="form-control no-border" placeholder="age" aria-label="age" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <input type="text" class="form-control no-border" placeholder="size" aria-label="size" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <input type="text" class="form-control no-border" placeholder="type" aria-label="type" readonly>
-                          </div>
+                          <p id="petLocation" class="fw-bold"></p>
+                          
+                          <p id="petAge" class="fw-bold"></p>
+                          
+                          <p id="petSize" class="fw-bold"></p>
+                          
+                          <p id="petType" class="fw-bold"></p>
                    
                 </div>
                 
             </div>  
             <div class="contacts my-5">
-              <a href="http://"><img src="../icons/facebook.svg" alt=""></a>
-              <a href="http://"><img src="../icons/instagram.svg" alt=""></a>
-              <a href="http://"><img src="../icons/whatsapp.svg" alt=""></a>
-              <a href="http://"><img src="../icons/email.png" alt=""></a>
+              <a href="#"><img src="../icons/facebook.svg" alt=""></a>
+              <a href="#"><img src="../icons/instagram.svg" alt=""></a>
+              <a href="#"><img src="../icons/whatsapp.svg" alt=""></a>
+              <a href="#"><img src="../icons/email.png" alt=""></a>
             </div>    
               
             
