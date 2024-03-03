@@ -1,6 +1,6 @@
 const formulario = document.getElementById('formulario');
 // Obtener el token de sesión almacenado en sessionStorage
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 // Variables para almacenar datos relevantes
 let imageUrl;
@@ -120,7 +120,7 @@ formulario.addEventListener('submit', function(event) {
     }); // fin request fetch imgbb
 
   } // fin if
-  
+  window.location.href = "../html/logued.html";
 
 }); //fin del formulario
 
