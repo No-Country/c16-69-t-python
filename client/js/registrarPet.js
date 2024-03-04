@@ -125,7 +125,7 @@ formulario.addEventListener('submit', function(event) {
     }); // fin request fetch imgbb
 
   } // fin if
-  
+  window.location.href = "../html/logued.html";
 
 }); //fin del formulario
 
