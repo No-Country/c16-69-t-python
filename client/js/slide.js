@@ -97,8 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
              const petType = document.getElementById("petType")
               if (mascotaSeleccionada == "Wanted"){
-                petType.textContent ="Buscada"
-                
+                petType.textContent ="Buscada"                
               }else{
                 petType.textContent="Encontrada";
               }

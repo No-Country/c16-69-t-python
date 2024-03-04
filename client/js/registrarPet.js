@@ -1,6 +1,6 @@
 const formulario = document.getElementById('formulario');
 // Obtener el token de sesión almacenado en sessionStorage
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 // Variables para almacenar datos relevantes
 let imageUrl;
@@ -102,6 +102,11 @@ formulario.addEventListener('submit', function(event) {
         })
         .then(data => {
           console.log("Respuesta del backend API crear red social:", data);
+          // Ejecutar función para redirigir a index después de 3 segundos
+          setTimeout(function() {
+            // Redirige a index.html
+            window.location.href = "../index.html";
+          }, 3000);
         })
         .catch(error => {
           console.error("Error al enviar los datos:", error);
@@ -125,8 +130,7 @@ formulario.addEventListener('submit', function(event) {
 }); //fin del formulario
 
 
-// Redirige a index.html
-//window.location.href = "../index.html";
+
 
 function cancelarRegistro (){
   window.location.href = "../html/logued.html";
