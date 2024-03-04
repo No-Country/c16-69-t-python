@@ -387,3 +387,31 @@
   color: #ff5722;
   text-align: center;
 }
+
+.slide-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+
+  width: 80%;
+
+  height: 20vh;
+
+  margin: auto;
+}
+
+.btn-slide{
+  font-family: "Poppins", sans-serif;
+  font-size: 1vmax;
+  font-weight: 500;
+  color: white;
+  font-style: normal;
+  text-transform: uppercase;
+  padding: 8px;
+  letter-spacing: 0.1em;
+  background-color: #ff5722;
+  color: white;
+  border: 2px solid #ff5722;
+  border-radius: 15px;
+}
