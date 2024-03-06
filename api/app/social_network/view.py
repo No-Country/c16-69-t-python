@@ -45,25 +45,42 @@ def register_social_network_for_pet():
 @bp.route("/", methods=["GET"])
 def get_social_networks():
     """
-    Endpoint GET to list the social networks with pagination.
+    Endpoint GET to list the social networks with pagination and optional filters.
     Examples:
     - http://127.0.0.1:5000/api/networks
     - http://127.0.0.1:5000/api/networks?page=1&per_page=5
+    - http://127.0.0.1:5000/api/networks?pet_id=<pet_id>
+    - http://127.0.0.1:5000/api/networks?social_media=Facebook
 
     Query Parameters:
     - page          (int)   Page number (default 1).
     - per_page      (int)   Number of social networks per page (default 5).
+    - pet_id        (str)   Filter by pet ID.
+    - social_media  (str)   Filter by social media type (e.g., facebook, twitter, instagram).
 
     Return:
-    - networks_data (list)  List of social networks on the specified page.
+    - networks_data (list)  List of social networks on the specified page that match the filters.
     """
     try:
         # Pagination parameters.
         page = int(request.args.get("page", 1))
         per_page = int(request.args.get("per_page", 5))
 
-        # Query to get paged social networks.
-        social_networks = SocialProfile.query.paginate(page=page, per_page=per_page)
+        # Filter parameters.
+        pet_id = request.args.get("pet_id")
+        social_media = request.args.get("social_media")
+
+        # Base query to get paged social networks.
+        query = SocialProfile.query
+
+        # Apply filters if provided.
+        if pet_id:
+            query = query.filter(SocialProfile.pet_id == pet_id)
+        if social_media:
+            query = query.filter(SocialProfile.social_media == social_media)
+
+        # Execute the query and paginate the results.
+        social_networks = query.paginate(page=page, per_page=per_page)
 
         # Serialize results.
         networks_data = social_networks_schema.dump(social_networks.items)

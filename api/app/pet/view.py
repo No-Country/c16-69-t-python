@@ -6,7 +6,7 @@ from werkzeug.exceptions import BadRequest
 from flask_jwt_extended import current_user, jwt_required
 
 from app import db
-from app.pet.models import Pet, PetPhotos
+from app.pet.models import Pet, PetPhotos, SocialProfile
 from app.pet.schemas import pet_schema, pets_schema, pet_photo_schema
 
 
@@ -75,6 +75,20 @@ def get_pets():
 
         # Serialize results.
         pets_data = pets_schema.dump(pets.items)
+
+        # Fetch networks for each pet and add to pets_data
+        for pet_data in pets_data:
+            pet_id = pet_data["id"]
+            pet_networks = SocialProfile.query.filter_by(pet_id=pet_id).all()
+            networks_data = []
+            for network in pet_networks:
+                network_data = {
+                    "social_media": network.social_media,
+                    "profile_url": network.profile_url,
+                    "pet_id": network.pet_id
+                }
+                networks_data.append(network_data)
+            pet_data["networks"] = networks_data
 
         # Build paginated response.
         response = {

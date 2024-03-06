@@ -99,6 +99,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 petSize.textContent = `Tamaño: ${mascotaSeleccionada.size}`; 
 
                 const petType = document.getElementById("petType")
+
+                const facebook_link = document.getElementById("facebook");
+                if (mascotaSeleccionada.networks.length > 0) {
+                    facebook_link.href = mascotaSeleccionada.networks[0].profile_url;
+                } else {
+                    facebook_link.href = "#";
+                }
+
                 if (mascotaSeleccionada == "Wanted"){
                     petType.textContent ="Buscada"                
                 }else{
