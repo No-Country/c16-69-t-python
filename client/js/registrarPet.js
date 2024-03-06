@@ -105,7 +105,7 @@ formulario.addEventListener('submit', function(event) {
           // Ejecutar función para redirigir a index después de 3 segundos
           setTimeout(function() {
             // Redirige a index.html
-            window.location.href = "../index.html";
+            window.location.href = "../html/logued.html";
           }, 3000);
         })
         .catch(error => {
@@ -125,7 +125,6 @@ formulario.addEventListener('submit', function(event) {
     }); // fin request fetch imgbb
 
   } // fin if
-  window.location.href = "../html/logued.html";
 
 }); //fin del formulario
 
