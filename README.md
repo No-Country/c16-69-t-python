@@ -51,7 +51,81 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ## 👥 Equipo
-in process...
+
+<table>
+  <tr>
+    <td>
+      <div align="center">
+        <a href="https://github.com/soleforna" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/23312207?v=4"/>
+        </a>
+        <a href="https://github.com/soleforna" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">María Soledad Fornasier</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        </a>
+        <a href="https://github.com/soleforna" target="_blank">
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+        </a>
+        <a href="www.linkedin.com/in/maría-soledad-fornasier-6791361aa" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <a href="https://github.com/Frere-Luz" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/131194829?v=4"/>
+        </a>
+        <a href="https://github.com/Frere-Luz" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">Luz Frere</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        </a>
+        <a href="https://github.com/Frere-Luz" target="_blank">
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Behance&color=172B4D&logo=Behance&logoColor=FFFFFF&label="/>
+        </a>
+        <a href="https://www.linkedin.com/in/luzfrere/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+      </div>
+    </td>
+        <td>
+      <div align="center">
+        <a href="https://github.com/dgsoto" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/155493558?v=4"/>
+        </a>
+        <a href="https://github.com/dgsoto" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">Diego Gonzales Soto</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer & QA</h4>
+        </a>
+        <a href="https://github.com/dgsoto" target="_blank">
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+        </a>
+        <a href="https://www.linkedin.com/in/diego-gonzales-soto/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <a href="https://github.com/Xukay101" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/40843439?v=4"/>
+        </a>
+        <a href="https://github.com/Xukay101" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">José Zacarías Flores</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
+        </a>
+        <a href="https://github.com/Xukay101" target="_blank">
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+        </a>
+        <a href="https://www.linkedin.com/in/zacariasdev/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+      </div>
+    </td>
+  </tr>
+</table>
 
 ## 🖼️ Capturas
-in process...
+<h1 align="center">
+    <img alt="PetFinder" title="#PetFinder" src="https://i.imgur.com/r7eYam2.png" />
+</h1>
